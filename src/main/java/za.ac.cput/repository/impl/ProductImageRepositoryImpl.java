@@ -1,5 +1,6 @@
 package za.ac.cput.repository.impl;
 
+import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.ProductImage;
 import za.ac.cput.repository.IProductImageRepository;
 
