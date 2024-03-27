@@ -1,9 +1,9 @@
 package za.ac.cput.factory;
 /*
  *Product:java
- *Product: Factory Class
+ *Product: ProductFactory Class
  * Author: Zachariah Matsimella
- * Date: 21 March 2024
+ * Date: 22 March 2024
  */
 
 import za.ac.cput.domain.Product;
