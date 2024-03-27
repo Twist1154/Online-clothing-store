@@ -99,6 +99,51 @@ public class Order {
         this.status = status;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Order order)) return false;
+
+        if (Double.compare(totalPrice, order.totalPrice) != 0) return false;
+        if (!Objects.equals(orderID, order.orderID)) return false;
+        if (!Objects.equals(customerID, order.customerID)) return false;
+        if (!Objects.equals(orderItemID, order.orderItemID)) return false;
+        if (!Objects.equals(addressID, order.addressID)) return false;
+        if (!Objects.equals(orderDate, order.orderDate)) return false;
+        if (!Objects.equals(orderItems, order.orderItems)) return false;
+        return Objects.equals(status, order.status);
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                ", orderID: '" + orderID + '\'' +
+                ", customerID: '" + customerID + '\'' +
+                ", orderItemID: '" + orderItemID + '\'' +
+                ", addressID: '" + addressID + '\'' +
+                ", orderDate: " + orderDate +
+                ", orderItems: " + orderItems +
+                ", totalPrice: " + totalPrice +
+                ", status: '" + status + '\'' +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = orderID != null ? orderID.hashCode() : 0;
+        result = 31 * result + (customerID != null ? customerID.hashCode() : 0);
+        result = 31 * result + (orderItemID != null ? orderItemID.hashCode() : 0);
+        result = 31 * result + (addressID != null ? addressID.hashCode() : 0);
+        result = 31 * result + (orderDate != null ? orderDate.hashCode() : 0);
+        result = 31 * result + (orderItems != null ? orderItems.hashCode() : 0);
+        temp = Double.doubleToLongBits(totalPrice);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        return result;
+    }
+
     public static class Builder{
         private String  orderID;
         private String customerID;

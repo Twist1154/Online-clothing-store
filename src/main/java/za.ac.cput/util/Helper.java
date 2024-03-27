@@ -13,16 +13,16 @@ import java.util.List;
 import java.util.UUID;
 
 public class Helper {
-    public static boolean isNullOrEmpty(String s){
-        if (s == null || s.isEmpty())
-            return true;
-        return false;
-    }
 
     public  static String generateId(){
         return UUID.randomUUID().toString();
     }
 
+    public static boolean isNullOrEmpty(String s){
+        if (s == null || s.isEmpty())
+            return true;
+        return false;
+    }
 
     public static boolean isNullOrEmpty(LocalDateTime orderItems) {
         if(orderItems == null || orderItems.isEqual(null))
