@@ -6,20 +6,20 @@ import za.ac.cput.repository.IOrderRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderRepositoryImpl implements IOrderRepository {
+public class OrderRepository implements IOrderRepository {
 
-    private static OrderRepositoryImpl repository = null;
-    private static List<Order> orderList; // Corrected variable name
+    private static IOrderRepository repository = null;
+    private static List<Order> orderList;
 
-    private OrderRepositoryImpl() {
-        orderList = new ArrayList<>();
+    private OrderRepository() {
+        orderList = new ArrayList<Order>();
     }
 
-    public static OrderRepositoryImpl getRepository() {
+    public static IOrderRepository getRepository() {
         if (repository == null) {
-            repository = new OrderRepositoryImpl();
+            repository = new OrderRepository();
         }
-        return repository;
+        return  repository;
     }
 
     @Override
@@ -31,8 +31,6 @@ public class OrderRepositoryImpl implements IOrderRepository {
         return null;
     }
 
-
-
     @Override
     public Order read(String  orderID) {
         for (Order order : orderList)
@@ -43,15 +41,15 @@ public class OrderRepositoryImpl implements IOrderRepository {
     }
 
     @Override
-    public boolean update(Order updatedOrder) {
+    public Order update(Order updatedOrder) {
         for (int i = 0; i < orderList.size(); i++) {
             Order order = orderList.get(i);
             if (order.getOrderID() == updatedOrder.getOrderID()) {
                 orderList.set(i, updatedOrder);
-                return true;
+                return updatedOrder;
             }
         }
-        return false;
+        return updatedOrder;
     }
 
     @Override
@@ -62,6 +60,11 @@ public class OrderRepositoryImpl implements IOrderRepository {
             }
         }
         return false;
+    }
+
+    @Override
+    public List<Order> getall() {
+        return orderList;
     }
 }
 
