@@ -1,22 +1,22 @@
-package za.ac.cput.domain;
+package za.ac.cput.factory;
 
 /*
- *CustomerFactory:java
- *CustomerFactory: Model Class
+ *Customer:java
+ *Customer: Model Class
  * Author: Rethabile Ntsekhe (220455430)
  * Date: 25 / March/2024
  */
 
-public class Customer {
+public class CustomerFactory {
     private String  customerId;
     private String privelages;
     private String  userID;
 
-    public Customer() {
+    public CustomerFactory() {
 
     }
 
-    private Customer(Builder builder) {
+    private CustomerFactory(Builder builder) {
         this.customerId = builder.customerId;
         this.privelages = builder.privelages;
         this.userID = builder.userID;
@@ -46,29 +46,9 @@ public class Customer {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Customer customer)) return false;
-
-        if (getCustomerId() != null ? !getCustomerId().equals(customer.getCustomerId()) : customer.getCustomerId() != null)
-            return false;
-        if (getPrivelages() != null ? !getPrivelages().equals(customer.getPrivelages()) : customer.getPrivelages() != null)
-            return false;
-        return getUserID() != null ? getUserID().equals(customer.getUserID()) : customer.getUserID() == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getCustomerId() != null ? getCustomerId().hashCode() : 0;
-        result = 31 * result + (getPrivelages() != null ? getPrivelages().hashCode() : 0);
-        result = 31 * result + (getUserID() != null ? getUserID().hashCode() : 0);
-        return result;
-    }
-
-    @Override
     public String toString() {
-        return ", CustomerFactory: " +
-                ", ID: " + customerId +
+        return "Customer: " +
+                "ID: " + customerId +
                 ", Privelages: '" + privelages + '\'' +
                 ", User ID: " + userID +
                 '}';
@@ -84,7 +64,7 @@ public class Customer {
             return this;
         }
 
-        public Builder setPrivileges(String privelages) {
+        public Builder setPrivelages(String privelages) {
             this.privelages = privelages;
             return this;
         }
@@ -98,14 +78,14 @@ public class Customer {
          *so this method below takes the elements into the builder nested class
          * and creates a copy
          */
-        public Customer.Builder copy(Customer customer) {
+        public CustomerFactory.Builder copy(CustomerFactory customer) {
             this.customerId = customer.customerId;
             this.privelages = customer.privelages;
             this.userID = customer.userID;
             return this;
         }
-        public Customer build(){
-            Customer customer = new Customer(this);
+        public CustomerFactory build(){
+            CustomerFactory customer = new CustomerFactory(this);
             return customer;
         }
     }
