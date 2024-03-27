@@ -17,14 +17,13 @@ public class OrderFactory {
                                     String  addressID, String  orderItemID) {
 
         if (Helper.isNullOrEmpty(String.valueOf(orderID)) ||
-                Helper.isNullOrEmpty(orderDate) ||
                 Helper.isNullOrEmpty(orderItems) ||
                 Helper.isOrderNullorEmpty(totalPrice) ||
                 Helper.isNullOrEmpty(String.valueOf(addressID))) {
             return null;
         }
 
-        // Create and return the Order object if all conditions are met
+
         return new Order.Builder()
                 .setOrderID(orderID)
                 .setOrderDate(orderDate)

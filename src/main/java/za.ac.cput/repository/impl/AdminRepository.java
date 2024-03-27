@@ -1,5 +1,6 @@
 package za.ac.cput.repository.impl;
 import za.ac.cput.domain.Admin;
+import za.ac.cput.domain.Customer;
 import za.ac.cput.repository.IAdminRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,25 +14,24 @@ import java.util.List;
  */
 
 public class AdminRepository implements IAdminRepository {
-    private static IAdminRepository repository = null;
+    private static AdminRepository repository = null;
     private List<Admin> adminList;
 
     private AdminRepository() {
-        adminList = new ArrayList<Admin>();
+        adminList = new ArrayList<>();
     }
 
-    public static IAdminRepository getRepository(){
-        if (repository == null){
+    public static AdminRepository getRepository() {
+        if (repository == null) {
             repository = new AdminRepository();
         }
         return repository;
     }
 
-
     @Override
     public Admin create(Admin admin) {
         boolean success = adminList.add(admin);
-        if (success){
+        if (success) {
             return admin;
         }
         return null;
@@ -39,9 +39,10 @@ public class AdminRepository implements IAdminRepository {
 
     @Override
     public Admin read(String s) {
-        for (Admin a : adminList){
-            if (a.getAdminId().equals(s))
+        for (Admin a : adminList) {
+            if (a.getAdminId().equals(s)) {
                 return a;
+            }
         }
         return null;
     }
@@ -53,9 +54,10 @@ public class AdminRepository implements IAdminRepository {
         if (adminOld == null)
             return null;
         boolean success = delete(id);
-        if (success){
-            if (adminList.add(admin))
+        if (success) {
+            if (adminList.add(admin)) {
                 return admin;
+            }
         }
         return null;
     }
@@ -65,7 +67,7 @@ public class AdminRepository implements IAdminRepository {
         Admin adminToDelete = read(s);
         if (adminToDelete == null)
             return false;
-        return (adminList.remove(adminToDelete));
+        return adminList.remove(adminToDelete);
     }
 
     @Override
