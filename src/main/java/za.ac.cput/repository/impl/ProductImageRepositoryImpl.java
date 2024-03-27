@@ -1,5 +1,6 @@
 package za.ac.cput.repository.impl;
 
+import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.ProductImage;
 import za.ac.cput.repository.IProductImageRepository;
 
@@ -29,7 +30,7 @@ public class ProductImageRepositoryImpl implements IProductImageRepository {
         return null;
     }
 
-    public ProductImage read(String id) {
+    public Customer read(String id) {
         for(ProductImage p: productImageList){
             if(p.getImageID().equals(id));
                 return p;

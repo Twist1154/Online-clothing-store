@@ -1,5 +1,6 @@
 package za.ac.cput.repository.impl;
 
+import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.OrderItem;
 import za.ac.cput.repository.IOrderItemRepository;
 
@@ -40,7 +41,7 @@ public class OrderItemRepository implements IOrderItemRepository {
     }
 
     @Override
-    public OrderItem read(String s) {
+    public Customer read(String s) {
         for (OrderItem o : orderItemList){
             if (o.getOrderItemId().equals(s))
                 return o;

@@ -6,6 +6,7 @@ package za.ac.cput.repository.impl;
  * Date: 21 March 2024
  */
 
+import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Product;
 import za.ac.cput.repository.IProductRepository;
 
@@ -36,7 +37,7 @@ public class ProductRepositoryImpl implements IProductRepository {
         return null;
     }
 
-    public Product read(String id) {
+    public Customer read(String id) {
         for(Product p: productList){
             if(p.getProductID().equals(id))
                 return p;

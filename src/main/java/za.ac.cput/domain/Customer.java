@@ -26,25 +26,13 @@ public class Customer {
         return customerId;
     }
 
-    public void setCustomerId(String  customerId) {
-        this.customerId = customerId;
-    }
     public String getPrivelages() {
         return privelages;
-    }
-
-    public void setPrivelages(String privelages){
-        this.privelages = privelages;
     }
 
     public String  getUserID() {
         return userID;
     }
-
-    public void setUserID(String  userID) {
-        this.userID = userID;
-    }
-
 
     @Override
     public String toString() {

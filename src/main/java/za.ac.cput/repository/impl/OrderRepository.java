@@ -1,5 +1,6 @@
 package za.ac.cput.repository.impl;
 
+import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Order;
 import za.ac.cput.repository.IOrderRepository;
 
@@ -31,8 +32,8 @@ public class OrderRepository implements IOrderRepository {
         return null;
     }
 
-    @Override
-    public Order read(String  orderID) {
+
+    public Customer read(String  orderID) {
         for (Order order : orderList)
             if (order.getOrderID() == orderID) {
                 return order;
