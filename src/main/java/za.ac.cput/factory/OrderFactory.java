@@ -23,7 +23,7 @@ public class OrderFactory {
             return null;
         }
 
-        // Create and return the Order object if all conditions are met
+
         return new Order.Builder()
                 .setOrderID(orderID)
                 .setOrderDate(orderDate)

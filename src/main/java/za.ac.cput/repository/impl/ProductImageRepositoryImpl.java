@@ -1,13 +1,7 @@
 package za.ac.cput.repository.impl;
-/*
- *Product:java
- *Product: ProductImageRepositoryImpl Class
- * Author: Zachariah Matsimella
- * Date: 24 March 2024
- */
+
 import za.ac.cput.domain.ProductImage;
 import za.ac.cput.repository.IProductImageRepository;
-
 import java.util.ArrayList;
 import java.util.List;
 

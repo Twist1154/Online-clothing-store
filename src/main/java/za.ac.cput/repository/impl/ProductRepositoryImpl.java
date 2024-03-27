@@ -6,6 +6,7 @@ package za.ac.cput.repository.impl;
  * Date: 24 March 2024
  */
 
+import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Product;
 import za.ac.cput.repository.IProductRepository;
 
