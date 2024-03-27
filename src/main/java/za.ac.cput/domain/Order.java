@@ -25,70 +25,42 @@ public class Order {
     }
 
     public Order(Builder builder) {
-        this.orderID = orderID;
-        this.customerID = customerID;
-        this.orderItemID = orderItemID;
-        this.addressID = addressID;
-        this.orderDate = orderDate;
-        this.orderItems = orderItems;
-        this.totalPrice = totalPrice;
-        this.status = status;
+        this.orderID = builder.orderID;
+        this.customerID = builder.customerID;
+        this.orderItemID = builder.orderItemID;
+        this.addressID = builder.addressID;
+        this.orderDate = builder.orderDate;
+        this.orderItems = builder.orderItems;
+        this.totalPrice = builder.totalPrice;
+        this.status = builder.status;
     }
 
     public String getOrderID() {
         return orderID;
     }
 
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
-    }
-
     public String getCustomerID() {
         return customerID;
-    }
-
-    public void setCustomerID(String customerID) {
-        this.customerID = customerID;
     }
 
     public String getOrderItemID() {
         return orderItemID;
     }
 
-    public void setOrderItemID(String orderItemID) {
-        this.orderItemID = orderItemID;
-    }
-
     public String getAddressID() {
         return addressID;
-    }
-
-    public void setAddressID(String addressID) {
-        this.addressID = addressID;
     }
 
     public LocalDateTime getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(LocalDateTime orderDate) {
-        this.orderDate = orderDate;
-    }
-
     public List<Order> getOrderItems() {
         return orderItems;
     }
 
-    public void setOrderItems(List<Order> orderItems) {
-        this.orderItems = orderItems;
-    }
-
     public double getTotalPrice() {
         return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     public String getStatus() {
@@ -100,49 +72,23 @@ public class Order {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Order order)) return false;
-
-        if (Double.compare(totalPrice, order.totalPrice) != 0) return false;
-        if (!Objects.equals(orderID, order.orderID)) return false;
-        if (!Objects.equals(customerID, order.customerID)) return false;
-        if (!Objects.equals(orderItemID, order.orderItemID)) return false;
-        if (!Objects.equals(addressID, order.addressID)) return false;
-        if (!Objects.equals(orderDate, order.orderDate)) return false;
-        if (!Objects.equals(orderItems, order.orderItems)) return false;
-        return Objects.equals(status, order.status);
-    }
-
-    @Override
     public String toString() {
-        return "Order{" +
-                ", orderID: '" + orderID + '\'' +
-                ", customerID: '" + customerID + '\'' +
-                ", orderItemID: '" + orderItemID + '\'' +
-                ", addressID: '" + addressID + '\'' +
-                ", orderDate: " + orderDate +
-                ", orderItems: " + orderItems +
-                ", totalPrice: " + totalPrice +
-                ", status: '" + status + '\'' +
-                '}';
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Order{")
+                .append(", orderID: '").append(orderID).append('\'')
+                .append(", customerID: '").append(customerID).append('\'')
+                .append(", orderItemID: '").append(orderItemID).append('\'')
+                .append(", addressID: '").append(addressID).append('\'')
+                .append(", orderDate: ").append(orderDate)
+                .append(", orderItems: ").append(orderItems)
+                .append(", totalPrice: ").append(totalPrice)
+                .append(", status: '").append(status).append('\'')
+                .append('}');
+        return stringBuilder.toString();
     }
 
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = orderID != null ? orderID.hashCode() : 0;
-        result = 31 * result + (customerID != null ? customerID.hashCode() : 0);
-        result = 31 * result + (orderItemID != null ? orderItemID.hashCode() : 0);
-        result = 31 * result + (addressID != null ? addressID.hashCode() : 0);
-        result = 31 * result + (orderDate != null ? orderDate.hashCode() : 0);
-        result = 31 * result + (orderItems != null ? orderItems.hashCode() : 0);
-        temp = Double.doubleToLongBits(totalPrice);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (status != null ? status.hashCode() : 0);
-        return result;
-    }
+
+
 
     public static class Builder{
         private String  orderID;
@@ -175,7 +121,7 @@ public class Order {
         }
 
         public Builder setOrderDate(LocalDateTime orderDate) {
-            this.orderDate = orderDate;
+            this.orderDate = orderDate.now();
             return this;
         }
 
