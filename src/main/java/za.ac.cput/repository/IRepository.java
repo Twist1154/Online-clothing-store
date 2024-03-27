@@ -11,7 +11,7 @@ import za.ac.cput.domain.Customer;
 public interface IRepository<T, ID> {
     T create(T t);
 
-    Customer read(String  id);
+    T read(ID id);
 
     T update(T t);
 

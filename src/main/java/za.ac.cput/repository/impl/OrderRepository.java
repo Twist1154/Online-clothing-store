@@ -1,6 +1,5 @@
 package za.ac.cput.repository.impl;
 
-import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Order;
 import za.ac.cput.repository.IOrderRepository;
 
@@ -13,14 +12,14 @@ public class OrderRepository implements IOrderRepository {
     private static List<Order> orderList;
 
     private OrderRepository() {
-        orderList = new ArrayList<Order>();
+        orderList = new ArrayList<>();
     }
 
     public static IOrderRepository getRepository() {
         if (repository == null) {
             repository = new OrderRepository();
         }
-        return  repository;
+        return repository;
     }
 
     @Override
@@ -32,12 +31,13 @@ public class OrderRepository implements IOrderRepository {
         return null;
     }
 
-
-    public Customer read(String  orderID) {
-        for (Order order : orderList)
-            if (order.getOrderID() == orderID) {
+    @Override
+    public Order read(String orderID) {
+        for (Order order : orderList) {
+            if (order.getOrderID().equals(orderID)) {
                 return order;
             }
+        }
         return null;
     }
 
@@ -45,18 +45,18 @@ public class OrderRepository implements IOrderRepository {
     public Order update(Order updatedOrder) {
         for (int i = 0; i < orderList.size(); i++) {
             Order order = orderList.get(i);
-            if (order.getOrderID() == updatedOrder.getOrderID()) {
+            if (order.getOrderID().equals(updatedOrder.getOrderID())) {
                 orderList.set(i, updatedOrder);
                 return updatedOrder;
             }
         }
-        return updatedOrder;
+        return null;
     }
 
     @Override
-    public boolean delete(String  orderID) {
+    public boolean delete(String orderID) {
         for (Order order : orderList) {
-            if (order.getOrderID() == orderID) {
+            if (order.getOrderID().equals(orderID)) {
                 return orderList.remove(order);
             }
         }
@@ -64,8 +64,7 @@ public class OrderRepository implements IOrderRepository {
     }
 
     @Override
-    public List<Order> getall() {
+    public List<Order> getAll() {
         return orderList;
     }
 }
-

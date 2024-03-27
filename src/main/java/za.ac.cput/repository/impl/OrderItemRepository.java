@@ -41,7 +41,7 @@ public class OrderItemRepository implements IOrderItemRepository {
     }
 
     @Override
-    public Customer read(String s) {
+    public OrderItem read(String s) {
         for (OrderItem o : orderItemList){
             if (o.getOrderItemId().equals(s))
                 return o;

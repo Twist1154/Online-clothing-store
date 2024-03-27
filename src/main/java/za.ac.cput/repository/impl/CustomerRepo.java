@@ -6,6 +6,13 @@ import za.ac.cput.repository.ICustomerRepo;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ *CustomerRepo :java
+ * Author: Rethabile Ntsekhe
+ * Student num: 22045540
+ * Date: 27 March 2024
+ */
+
 public class CustomerRepo implements ICustomerRepo {
     private static ICustomerRepo repository = null;
     private List<Customer> customerList;
@@ -31,10 +38,11 @@ public class CustomerRepo implements ICustomerRepo {
     }
 
     @Override
-    public Customer read(Customer s) {
-        for (Customer a : customerList) {
-            if (a.getCustomerId().equals(s))
-                return a;
+    public Customer read(String customerId) {
+        for (Customer customer : customerList) {
+            if (customer.getCustomerId().equals(customerId)) {
+                return customer;
+            }
         }
         return null;
     }
@@ -43,26 +51,23 @@ public class CustomerRepo implements ICustomerRepo {
     public Customer update(Customer customer) {
         String id = customer.getCustomerId();
         Customer customerOld = read(id);
-        if (customerOld == null)
+        if (customerOld == null) {
             return null;
+        }
         boolean success = delete(id);
         if (success) {
-            if (customerList.add(customer))
-                return customer;
+            customerList.add(customer);
+            return customer;
         }
         return null;
     }
 
     @Override
-    public boolean delete(Customer customer) {
-        return false;
-    }
-
-    @Override
-    public boolean delete(String customer) {
-        Customer toDelete = read(customer);
-        if (toDelete == null)
+    public boolean delete(String customerId) {
+        Customer toDelete = read(customerId);
+        if (toDelete == null) {
             return false;
+        }
         return customerList.remove(toDelete);
     }
 

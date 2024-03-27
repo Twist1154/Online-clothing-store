@@ -30,7 +30,7 @@ public class ProductImageRepositoryImpl implements IProductImageRepository {
         return null;
     }
 
-    public Customer read(String id) {
+    public ProductImage read(String id) {
         for(ProductImage p: productImageList){
             if(p.getImageID().equals(id));
                 return p;

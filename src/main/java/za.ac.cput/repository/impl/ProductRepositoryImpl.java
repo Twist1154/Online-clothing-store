@@ -37,7 +37,7 @@ public class ProductRepositoryImpl implements IProductRepository {
         return null;
     }
 
-    public Customer read(String id) {
+    public Product read(String id) {
         for(Product p: productList){
             if(p.getProductID().equals(id))
                 return p;

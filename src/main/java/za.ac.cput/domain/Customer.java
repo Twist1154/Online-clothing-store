@@ -26,12 +26,43 @@ public class Customer {
         return customerId;
     }
 
+    public void setCustomerId(String  customerId) {
+        this.customerId = customerId;
+    }
     public String getPrivelages() {
         return privelages;
     }
 
+    public void setPrivelages(String privelages){
+        this.privelages = privelages;
+    }
+
     public String  getUserID() {
         return userID;
+    }
+
+    public void setUserID(String  userID) {
+        this.userID = userID;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Customer customer)) return false;
+
+        if (getCustomerId() != null ? !getCustomerId().equals(customer.getCustomerId()) : customer.getCustomerId() != null)
+            return false;
+        if (getPrivelages() != null ? !getPrivelages().equals(customer.getPrivelages()) : customer.getPrivelages() != null)
+            return false;
+        return getUserID() != null ? getUserID().equals(customer.getUserID()) : customer.getUserID() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getCustomerId() != null ? getCustomerId().hashCode() : 0;
+        result = 31 * result + (getPrivelages() != null ? getPrivelages().hashCode() : 0);
+        result = 31 * result + (getUserID() != null ? getUserID().hashCode() : 0);
+        return result;
     }
 
     @Override
