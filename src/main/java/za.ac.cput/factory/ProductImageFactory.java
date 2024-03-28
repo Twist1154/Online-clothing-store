@@ -1,5 +1,10 @@
 package za.ac.cput.factory;
-
+/*
+ *Product:java
+ *Product: ProductImageFactory Class
+ * Author: Zachariah Matsimella
+ * Date: 22 March 2024
+ */
 import za.ac.cput.domain.ProductImage;
 import za.ac.cput.util.Helper;
 
