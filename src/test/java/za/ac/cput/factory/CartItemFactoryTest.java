@@ -17,7 +17,7 @@ import za.ac.cput.factory.CartItemFactory;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-
+@TestMethodOrder(MethodOrderer.class)
 public class CartItemFactoryTest {
     @Test
     void testBuildCart(){
