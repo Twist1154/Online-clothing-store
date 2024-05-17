@@ -4,21 +4,18 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.repository.ICustomerRepo;
-import za.ac.cput.repository.impl.CustomerRepo;
+import za.ac.cput.repository.ICustomerRepo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerFactoryTest {
 
-    @Test
-    void createCustomer() {
-    }
     private static Customer customer;
-    private static final ICustomerRepo repository = CustomerRepo.getRepository();
+    private static final ICustomerRepo repository = ICustomerRepo.getRepository();
 
     @Test
     @Order(1)
-    void create() {
+    void createCustomer() {
         Customer createdCustomer = CustomerFactory.createCustomer("123", "Premium", "user123");
         assertNotNull(createdCustomer);
         assertEquals("123", createdCustomer.getCustomerId());
@@ -40,7 +37,7 @@ class CustomerFactoryTest {
     void update() {
         Customer updatedCustomer = new Customer.Builder()
                 .copy(customer)
-                .setPrivileges("Basic")
+                .setPrivelages("Basic")
                 .build();
 
         Customer updated = repository.update(updatedCustomer);
@@ -56,4 +53,3 @@ class CustomerFactoryTest {
         assertNull(repository.read(customer.getCustomerId()));
     }
 }
-
