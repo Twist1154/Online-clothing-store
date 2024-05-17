@@ -8,7 +8,9 @@
 
 package za.ac.cput.factory;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.Category;
 import za.ac.cput.domain.Product;
 
@@ -17,39 +19,42 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.MethodName.class)
 class CategoryFactoryTest {
-
-    /*@Test
-    void buildCategory() {
-        Category category = CategoryFactory.buildCategory("1","Mens","Mens Clothing",null);
-        assertNotNull(category);
-        System.out.println(category);
-    }
-
-    @Test
-    void testBuildCategory() {
-        Category category = CategoryFactory.buildCategory("Mens","Mens Clothing",null);
-        assertNotNull(category);
-        System.out.println(category);
-    }*/
-
     String categoryID = "1";
     String categoryName = "Men";
-    String categoryDescription = "Clothing for men";
 
     @Test
-    //This test will pass, categeoryID, categoryName, categoryDescription and products are not null
-    void buildCategory() {
-        Category category = CategoryFactory.buildCategory(categoryID, categoryName, categoryDescription);
+    //This test will pass, categoryID and categoryName are not null
+    void a_buildCategory() {
+        Category category = CategoryFactory.buildCategory(categoryID, categoryName);
         assertNotNull(category);
         System.out.println(category);
     }
 
     @Test
-    //This test will pass, categoryName, categoryDescription, products are not null
-    void testBuildCategory() {
-        Category category = CategoryFactory.buildCategory(categoryName, categoryDescription); //categoryID is auto-generated
+        //This test will fail, as both categoryID and categoryName are null
+    void b_buildCategoryWithNull() {
+        Category category = CategoryFactory.buildCategory(null,null);
         assertNotNull(category);
         System.out.println(category);
     }
+
+    @Test
+    //This test will pass, categoryID is auto-generated, categoryName is not null
+    void c_buildCategoryWithGeneratedID() {
+        Category category = CategoryFactory.buildCategory(categoryName); //categoryID is auto-generated
+        assertNotNull(category);
+        System.out.println(category);
+    }
+
+    @Test
+    //This test will fail, as categoryID is null
+    void d_buildCategoryWithNullID() {
+        Category category = CategoryFactory.buildCategory(null , categoryName);
+        assertNotNull(category);
+        System.out.println(category);
+    }
+
+
 }
