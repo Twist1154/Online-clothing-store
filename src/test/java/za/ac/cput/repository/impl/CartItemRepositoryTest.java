@@ -1,22 +1,28 @@
 package za.ac.cput.repository.impl;
-
+/**
+ * E-Commerce Web Application for selling clothes
+ * CartItemRepositoryTest.java
+ * Test for the CartItemRepository
+ * Author: Kinzonzi Genereux Mukoko - 221477934
+ * Date: 16 May 2024
+ * */
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.Cart;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.CartItem;
-import za.ac.cput.factory.CartFactory;
 import za.ac.cput.factory.CartItemFactory;
 import za.ac.cput.repository.ICartItemRepository;
-import za.ac.cput.repository.ICartRepository;
-import za.ac.cput.repository.impl.CartItemRepositoryImpl;
-import za.ac.cput.repository.impl.CartRepositoryImpl;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
+@SpringBootTest
+@TestMethodOrder(MethodOrderer.class)
+class CartItemRepositoryTest {
 
-class CartItemRepositoryImplTest {
-    private static ICartItemRepository repository = CartItemRepositoryImpl.getRepository();
+    @Autowired
+    private static ICartItemRepository repository = CartItemRepository.getRepository();
     private CartItem cItem = CartItemFactory.buildCart("1202","#1432","000100",14.50);
 
     @Test
