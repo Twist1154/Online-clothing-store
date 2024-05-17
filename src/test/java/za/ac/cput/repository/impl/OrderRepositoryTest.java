@@ -1,57 +1,36 @@
 package za.ac.cput.repository.impl;
 
-//import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.Order.Builder;
-import za.ac.cput.factory.OrderFactory;
 import za.ac.cput.domain.Order;
 import za.ac.cput.repository.IOrderRepository;
 
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrderRepositoryTest {
-    private static final IOrderRepository repository = OrderRepository.getRepository();
 
+    private IOrderRepository repository;
 
+    @BeforeEach
+    void setUp() {
+        repository = OrderRepository.getRepository();
+    }
 
     @Test
     void create() {
-        Order order = new Order.Builder()
-                .setOrderID("1")
-                .setCustomerID("customer1")
-                .setOrderItemID("item1")
-                .setAddressID("address1")
-                .setOrderDate(LocalDateTime.now())
-                .setOrderItems(new ArrayList<>())
-                .setTotalPrice(100.00)
-                .setStatus("pending")
-                .build();
-
+        Order order = buildOrder("1", "customer1", "item1", "address1", 100.00, "pending");
         Order createdOrder = repository.create(order);
         assertNotNull(createdOrder);
         assertEquals(order.getOrderID(), createdOrder.getOrderID());
     }
 
-
     @Test
     void read() {
-        Order order = new Order.Builder()
-                .setOrderID("1")
-                .setCustomerID("customer1")
-                .setOrderItemID("item1")
-                .setAddressID("address1")
-                .setOrderDate(LocalDateTime.now())
-                .setOrderItems(new ArrayList<>())
-                .setTotalPrice(100.00)
-                .setStatus("pending")
-                .build();
-
-       repository.create(order);
+        Order order = buildOrder("1", "customer1", "item1", "address1", 100.00, "pending");
+        repository.create(order);
 
         Order retrievedOrder = repository.read("1");
         assertNotNull(retrievedOrder);
@@ -60,17 +39,7 @@ class OrderRepositoryTest {
 
     @Test
     void update() {
-        Order order = new Order.Builder()
-                .setOrderID("1")
-                .setCustomerID("customer1")
-                .setOrderItemID("item1")
-                .setAddressID("address1")
-                .setOrderDate(LocalDateTime.now())
-                .setOrderItems(new ArrayList<>())
-                .setTotalPrice(100.00)
-                .setStatus("pending")
-                .build();
-
+        Order order = buildOrder("1", "customer1", "item1", "address1", 100.00, "pending");
         repository.create(order);
 
         order.setStatus("shipped");
@@ -85,17 +54,7 @@ class OrderRepositoryTest {
 
     @Test
     void delete() {
-        Order order = new Order.Builder()
-                .setOrderID("1")
-                .setCustomerID("customer1")
-                .setOrderItemID("item1")
-                .setAddressID("address1")
-                .setOrderDate(LocalDateTime.now())
-                .setOrderItems(new ArrayList<>())
-                .setTotalPrice(100.00)
-                .setStatus("pending")
-                .build();
-
+        Order order = buildOrder("1", "customer1", "item1", "address1", 100.00, "pending");
         repository.create(order);
 
         boolean deleted = repository.delete("1");
@@ -103,5 +62,19 @@ class OrderRepositoryTest {
 
         Order deletedOrder = repository.read("1");
         assertNull(deletedOrder);
+    }
+
+    private Order buildOrder(String orderID, String customerID, String orderItemId,
+                             String addressID, double totalPrice, String status) {
+        return new Order.Builder()
+                .setOrderID(orderID)
+                .setCustomerID(customerID)
+                .setOrderID(orderItemId)
+                .setAddressID(addressID)
+                .setOrderDate(LocalDateTime.now())
+                .setOrderItems(new ArrayList<>())
+                .setTotalPrice(totalPrice)
+                .setStatus(status)
+                .build();
     }
 }
