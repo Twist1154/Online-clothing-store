@@ -7,7 +7,15 @@ package za.ac.cput.domain;
  * Date: 21 March 2024
  */
 
-public class Product {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+@Entity
+public class Product implements Serializable {
+    @Id
     private String productID;
     private String categoryID;
     private String name;
@@ -17,7 +25,7 @@ public class Product {
     private String reviewID;
     private String imageID;
 
-    public Product() {
+    protected Product() {
 
     }
 
@@ -36,64 +44,45 @@ public class Product {
         return productID;
     }
 
-    public void setProductID(String productID) {
-        this.productID = productID;
-    }
-
     public String getCategoryID() {
         return categoryID;
-    }
-
-    public void setCategoryID(String categoryID) {
-        this.categoryID = categoryID;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public int getStock() {
         return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
     }
 
     public String getReviewID() {
         return reviewID;
     }
 
-    public void setReviewID(String reviewID) {
-        this.reviewID = reviewID;
-    }
-
     public String getImageID() {
         return imageID;
     }
 
-    public void setImageID(String imageID) {
-        this.imageID = imageID;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Double.compare(product.price, price) == 0 && stock == product.stock && productID.equals(product.productID) && Objects.equals(categoryID, product.categoryID) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(reviewID, product.reviewID) && Objects.equals(imageID, product.imageID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productID, categoryID, name, description, price, stock, reviewID, imageID);
     }
 
     @Override
