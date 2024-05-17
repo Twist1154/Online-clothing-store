@@ -1,21 +1,26 @@
 package za.ac.cput.repository.impl;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Cart;
 import za.ac.cput.domain.CartItem;
 import za.ac.cput.factory.CartFactory;
 import za.ac.cput.factory.CartItemFactory;
-import za.ac.cput.repository.impl.CartRepositoryImpl;
 import za.ac.cput.repository.ICartRepository;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-class CartRepositoryImplTest {
-    private static ICartRepository repository = CartRepositoryImpl.getRepository();
+@SpringBootTest
+@TestMethodOrder(MethodOrderer.class)
+class CartRepositoryTest {
+    @Autowired
+    private static ICartRepository repository = CartRepository.getRepository();
 
     private ArrayList<CartItem> list = new ArrayList<CartItem>();
     private CartItem cItem = CartItemFactory.buildCart("1202","#1432","000100",14.50);

@@ -17,6 +17,7 @@ public class CartFactory {
         return new Cart.Builder().setcartID(cartID)
                 .setcustomerID(customerID)
                 .settotalAmount(totalAmpount)
+                .setcartItems(cartItems)
                 .build();
     }
 }

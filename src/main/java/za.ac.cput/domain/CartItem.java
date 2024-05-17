@@ -1,14 +1,20 @@
 package za.ac.cput.domain;
 
-import java.util.Objects;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+import java.util.Objects;
+@Entity
+@Embeddable
 public class CartItem {
+    @Id
     private String cartItemID;
     private String cartID;
     private String productID;
     private double price;
 
-    private CartItem(){};
+    protected CartItem(){};
 
     private CartItem(Builder buildr){
         this.cartItemID = buildr.cartItemID;

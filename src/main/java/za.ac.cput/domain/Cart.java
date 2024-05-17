@@ -1,15 +1,29 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 import java.util.Objects;
-
+@Entity
 public class Cart {
+    @Id
     private String cartID;
     private String customerID;
+    /*
+    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "cartItems", joinColumns = @JoinColumn(name = "Cart_id"))
+    @Column(name = "cartItem", nullable = false)
+    */
+    @ElementCollection
+    @CollectionTable(
+            name="CartItem",
+            joinColumns=@JoinColumn(name="CartItemId")
+    )
+    @Column(name="Cart_Items")
     private List<CartItem> cartItems;
     private double totalAmount;
 
-    private Cart(){};
+    protected Cart(){};
 
     private Cart(Builder builder){
         this.cartID = builder.cartID;
