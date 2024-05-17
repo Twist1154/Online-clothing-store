@@ -21,6 +21,7 @@ public class Helper {
         return s == null || s.isEmpty();
     }
 
+
     public static boolean isOrderNullorEmpty(Double s) {
         return s == null || Double.isNaN(s);
     }
@@ -30,6 +31,6 @@ public class Helper {
     }
 
     public static boolean isValidRange(int rating) {
-        return rating > 0 && rating <= 5;
+        return rating >= 1 && rating <= 5;
     }
 }

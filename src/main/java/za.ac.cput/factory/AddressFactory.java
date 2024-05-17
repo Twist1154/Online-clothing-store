@@ -6,7 +6,7 @@ import za.ac.cput.util.Helper;
 public class AddressFactory    {
     public static Address buildAddress(String AddressID, String Street,String city,
                                      String province,String zipCode){
-        if (Helper.isNullOrEmpty(AddressID) || Helper.isNullOrEmpty(Street))
+        if (Helper.isNullOrEmpty(AddressID) || Helper.isNullOrEmpty(Street)|| Helper.isNullOrEmpty(city) || Helper.isNullOrEmpty(province) || Helper.isNullOrEmpty(zipCode))
             return null;
 
         return new Address.Builder().setAddressID(AddressID).setStreet(Street)

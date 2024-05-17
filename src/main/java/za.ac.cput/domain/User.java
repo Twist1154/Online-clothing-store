@@ -1,12 +1,21 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class User {
+    @Id
     private String userID;
     private String firstName;
     private String lastName;
     private String password;
     private String email;
     private String addressID;
+
+    protected User(){
+
+    }
 
     private User(Builder builder) {
         this.userID = builder.userID;

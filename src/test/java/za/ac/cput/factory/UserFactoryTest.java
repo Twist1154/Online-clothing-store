@@ -9,7 +9,6 @@ class UserFactoryTest {
     @Test
     void buildUser() {
         User user = UserFactory.buildUser("I7I775", "Nicole", "fgfg","fgfbmg","gbhghhy","bhtyhjyt");
-
         assertNotNull(user);
         System.out.println(user);
     }
