@@ -29,4 +29,8 @@ public class Helper {
     public static boolean isNullOrEmpty(List<Order> s) {
         return s == null || s.isEmpty();
     }
+
+    public static boolean isValidRange(int rating) {
+        return rating >= 1 && rating <= 5;
+    }
 }

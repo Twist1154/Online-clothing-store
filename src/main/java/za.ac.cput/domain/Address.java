@@ -1,11 +1,19 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Address {
+    @Id
     private String AddressID;
     private String Street;
     private String city;
     private String province;
     private String zipCode;
+
+    protected Address() {
+    }
 
     private Address(Builder builder) {
         this.AddressID = builder.AddressID;
