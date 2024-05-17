@@ -8,15 +8,20 @@
 
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "Category")
 public class Category {
     //Attributes
+    @Id
     private String categoryID;
     private String categoryName;
-    private String categoryDescription;
-    //private List<Product> product;
 
     //Constructor
     public Category(){
@@ -26,8 +31,6 @@ public class Category {
     private Category(Builder builder){
         this.categoryID = builder.categoryID;
         this.categoryName = builder.categoryName;
-        this.categoryDescription = builder.categoryDescription;
-        //this.product = builder.product;
     }
 
     //Getters
@@ -39,20 +42,17 @@ public class Category {
         return categoryName;
     }
 
-    public String getCategoryDescription() {
-        return categoryDescription;
-    }
-
-    /*public List<Product> getproduct() {
-        return product;
-    }*/
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
-        return Objects.equals(categoryID, category.categoryID) && Objects.equals(categoryName, category.categoryName) && Objects.equals(categoryDescription, category.categoryDescription);
+        return Objects.equals(categoryID, category.categoryID) && Objects.equals(categoryName, category.categoryName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(categoryID, categoryName);
     }
 
     @Override
@@ -60,21 +60,13 @@ public class Category {
         return "Category{" +
                 "categoryID='" + categoryID + '\'' +
                 ", categoryName='" + categoryName + '\'' +
-                ", categoryDescription='" + categoryDescription + '\'' +
                 '}';
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(categoryID, categoryName, categoryDescription);
     }
 
     //Builder Pattern
     public static class Builder{
         private String categoryID;
         private String categoryName;
-        private String categoryDescription;
-        //private List<Product> product;
 
         public Builder setCategoryID(String categoryID){
             this.categoryID = categoryID;
@@ -86,21 +78,9 @@ public class Category {
             return this;
         }
 
-        public Builder setCategoryDescription(String categoryDescription){
-            this.categoryDescription = categoryDescription;
-            return this;
-        }
-
-        /*public Builder setproduct(List<Product> product){
-            this.product = product;
-            return this;
-        }*/
-
         public Builder copy(Category category){
             this.categoryID = category.categoryID;
             this.categoryName = category.categoryName;
-            this.categoryDescription = category.categoryDescription;
-            //this.product = category.product;
             return this;
         }
 
