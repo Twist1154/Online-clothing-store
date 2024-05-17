@@ -1,13 +1,22 @@
 package za.ac.cput.domain;
 
-import java.sql.Blob;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 
-public class ProductImage {
+import java.io.Serializable;
+import java.sql.Blob;
+import java.util.Objects;
+
+@Entity
+public class ProductImage implements Serializable {
+    @Id
     private String imageID;
     private String productID;
+    @Lob
     private Blob image;
 
-    public ProductImage() {
+    protected ProductImage() {
 
     }
 
@@ -21,24 +30,25 @@ public class ProductImage {
         return imageID;
     }
 
-    public void setImageID(String imageID) {
-        this.imageID = imageID;
-    }
-
     public String getProductID() {
         return productID;
-    }
-
-    public void setProductID(String productID) {
-        this.productID = productID;
     }
 
     public Blob getImage() {
         return image;
     }
 
-    public void setImage(Blob image) {
-        this.image = image;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductImage that = (ProductImage) o;
+        return Objects.equals(imageID, that.imageID) && Objects.equals(productID, that.productID) && Objects.equals(image, that.image);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(imageID, productID, image);
     }
 
     @Override
