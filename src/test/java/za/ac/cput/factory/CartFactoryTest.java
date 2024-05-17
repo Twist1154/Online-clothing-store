@@ -18,7 +18,7 @@ import za.ac.cput.factory.CartItemFactory;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
+@TestMethodOrder(MethodOrderer.class)
 public class CartFactoryTest {
     private ArrayList<CartItem> list = new ArrayList<CartItem>();
 
