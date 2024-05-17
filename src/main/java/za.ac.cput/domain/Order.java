@@ -1,38 +1,45 @@
 package za.ac.cput.domain;
 
 /*
- *Order: java
- *Order:Model Class
+ * Order: java
+ * Order: Model Class
  * Author: Rethabile Ntsekhe (220455430)
- * Date: 24 March 2024
+ * Date: 17 May 2024
  */
 
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
+@Entity
 public class Order {
-    private String  orderID;
+    @Id
+    private String orderID;
     private String customerID;
-    private String  orderItemID;
-    private String  addressID;
+    private String addressID;
     private LocalDateTime orderDate;
-    private List<Order> orderItems;
     private double totalPrice;
     private String status;
 
-    public Order() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "order_id")
+    private List<OrderItem> orderItems = new ArrayList<>();
+
+    public Order() {}
 
     public Order(Builder builder) {
         this.orderID = builder.orderID;
         this.customerID = builder.customerID;
-        this.orderItemID = builder.orderItemID;
         this.addressID = builder.addressID;
         this.orderDate = builder.orderDate;
-        this.orderItems = builder.orderItems;
         this.totalPrice = builder.totalPrice;
         this.status = builder.status;
+        this.orderItems = builder.orderItems;
     }
 
     public String getOrderID() {
@@ -43,20 +50,12 @@ public class Order {
         return customerID;
     }
 
-    public String getOrderItemID() {
-        return orderItemID;
-    }
-
     public String getAddressID() {
         return addressID;
     }
 
     public LocalDateTime getOrderDate() {
         return orderDate;
-    }
-
-    public List<Order> getOrderItems() {
-        return orderItems;
     }
 
     public double getTotalPrice() {
@@ -67,38 +66,61 @@ public class Order {
         return status;
     }
 
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
     public void setStatus(String status) {
         this.status = status;
     }
 
     @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Order{")
-                .append(", orderID: '").append(orderID).append('\'')
-                .append(", customerID: '").append(customerID).append('\'')
-                .append(", orderItemID: '").append(orderItemID).append('\'')
-                .append(", addressID: '").append(addressID).append('\'')
-                .append(", orderDate: ").append(orderDate)
-                .append(", orderItems: ").append(orderItems)
-                .append(", totalPrice: ").append(totalPrice)
-                .append(", status: '").append(status).append('\'')
-                .append('}');
-        return stringBuilder.toString();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Order order)) return false;
+        if (Double.compare(order.totalPrice, totalPrice) != 0) return false;
+        if (orderID != null ? !orderID.equals(order.orderID) : order.orderID != null) return false;
+        if (customerID != null ? !customerID.equals(order.customerID) : order.customerID != null) return false;
+        if (addressID != null ? !addressID.equals(order.addressID) : order.addressID != null) return false;
+        if (orderDate != null ? !orderDate.equals(order.orderDate) : order.orderDate != null) return false;
+        return status != null ? status.equals(order.status) : order.status == null;
     }
 
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = orderID != null ? orderID.hashCode() : 0;
+        result = 31 * result + (customerID != null ? customerID.hashCode() : 0);
+        result = 31 * result + (addressID != null ? addressID.hashCode() : 0);
+        result = 31 * result + (orderDate != null ? orderDate.hashCode() : 0);
+        temp = Double.doubleToLongBits(totalPrice);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        return result;
+    }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderID='" + orderID + '\'' +
+                ", customerID='" + customerID + '\'' +
+                ", addressID='" + addressID + '\'' +
+                ", orderDate=" + orderDate +
+                ", totalPrice=" + totalPrice +
+                ", status='" + status + '\'' +
+                ", orderItems=" + orderItems +
+                '}';
+    }
 
-
-    public static class Builder{
-        private String  orderID;
+    public static class Builder {
+        private String orderID;
         private String customerID;
-        private String  orderItemID;
-        private String  addressID;
+        private String addressID;
         private LocalDateTime orderDate;
-        private List<Order> orderItems;
         private double totalPrice;
         private String status;
+        private List<OrderItem> orderItems = new ArrayList<>();
 
         public Builder setOrderID(String orderID) {
             this.orderID = orderID;
@@ -110,23 +132,13 @@ public class Order {
             return this;
         }
 
-        public Builder setOrderItemID(String orderItemID) {
-            this.orderItemID = orderItemID;
-            return this;
-        }
-
         public Builder setAddressID(String addressID) {
             this.addressID = addressID;
             return this;
         }
 
         public Builder setOrderDate(LocalDateTime orderDate) {
-            this.orderDate = orderDate.now();
-            return this;
-        }
-
-        public Builder setOrderItems(List<Order> orderItems) {
-            this.orderItems = orderItems;
+            this.orderDate = orderDate;
             return this;
         }
 
@@ -139,25 +151,14 @@ public class Order {
             this.status = status;
             return this;
         }
-        /*
-         *so this method below takes the elements into the builder nested class
-         * and creates a copy
-         */
-        public Order.Builder copy(Order order) {
-            this.orderID = orderID;
-            this.customerID = customerID;
-            this.orderItemID = orderItemID;
-            this.addressID = addressID;
-            this.orderDate = orderDate;
+
+        public Builder setOrderItems(List<OrderItem> orderItems) {
             this.orderItems = orderItems;
-            this.totalPrice = totalPrice;
-            this.status = status;
             return this;
         }
-        public Order build(){
-            Order order = new Order(this);
-            return order;
-        }
 
+        public Order build() {
+            return new Order(this);
+        }
     }
 }

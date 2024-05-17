@@ -2,15 +2,12 @@ package za.ac.cput.repository.impl;
 
 //import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.Order.Builder;
-import za.ac.cput.factory.OrderFactory;
 import za.ac.cput.domain.Order;
 import za.ac.cput.repository.IOrderRepository;
 
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,7 +24,7 @@ class OrderRepositoryTest {
                 .setOrderItemID("item1")
                 .setAddressID("address1")
                 .setOrderDate(LocalDateTime.now())
-                .setOrderItems(new ArrayList<>())
+                .setOrderItemId(new ArrayList<>())
                 .setTotalPrice(100.00)
                 .setStatus("pending")
                 .build();
@@ -46,7 +43,7 @@ class OrderRepositoryTest {
                 .setOrderItemID("item1")
                 .setAddressID("address1")
                 .setOrderDate(LocalDateTime.now())
-                .setOrderItems(new ArrayList<>())
+                .setOrderItemId(new ArrayList<>())
                 .setTotalPrice(100.00)
                 .setStatus("pending")
                 .build();
@@ -66,7 +63,7 @@ class OrderRepositoryTest {
                 .setOrderItemID("item1")
                 .setAddressID("address1")
                 .setOrderDate(LocalDateTime.now())
-                .setOrderItems(new ArrayList<>())
+                .setOrderItemId(new ArrayList<>())
                 .setTotalPrice(100.00)
                 .setStatus("pending")
                 .build();
@@ -91,7 +88,7 @@ class OrderRepositoryTest {
                 .setOrderItemID("item1")
                 .setAddressID("address1")
                 .setOrderDate(LocalDateTime.now())
-                .setOrderItems(new ArrayList<>())
+                .setOrderItemId(new ArrayList<>())
                 .setTotalPrice(100.00)
                 .setStatus("pending")
                 .build();
