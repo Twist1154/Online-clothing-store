@@ -1,15 +1,35 @@
 package za.ac.cput.domain;
+/**
+ * E-Commerce Web Application for selling clothes
+ * Cart.java
+ * This POJO class for the Cart entity. Domain class using Builder Pattern
+ * Author: Kinzonzi Genereux Mukoko - 221477934
+ * Date: 14 May 2024
+ */
+import jakarta.persistence.*;
 
 import java.util.List;
 import java.util.Objects;
-
+@Entity
 public class Cart {
+    @Id
     private String cartID;
     private String customerID;
+    /*
+    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "cartItems", joinColumns = @JoinColumn(name = "Cart_id"))
+    @Column(name = "cartItem", nullable = false)
+    */
+    @ElementCollection
+    @CollectionTable(
+            name="CartItem",
+            joinColumns=@JoinColumn(name="CartItemId")
+    )
+    @Column(name="Cart_Items")
     private List<CartItem> cartItems;
     private double totalAmount;
 
-    private Cart(){};
+    protected Cart(){};
 
     private Cart(Builder builder){
         this.cartID = builder.cartID;

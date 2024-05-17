@@ -7,11 +7,9 @@ package za.ac.cput.util;
  */
 
 import za.ac.cput.domain.Order;
-import za.ac.cput.domain.User;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.regex.Pattern;
 
 public class Helper {
 
@@ -31,13 +29,4 @@ public class Helper {
     public static boolean isNullOrEmpty(List<Order> s) {
         return s == null || s.isEmpty();
     }
-
-    public static boolean isEmailValid(String emailAddress) {
-        String regexemail ="^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@\" \n" +
-                "        + \"[^-][A-Za-z0-9-]+(\\\\.[A-Za-z0-9-]+)*(\\\\.[A-Za-z]{2,})$";
-        return Pattern.compile(regexemail)
-                .matcher(emailAddress)
-                .matches();
-    }
-
 }

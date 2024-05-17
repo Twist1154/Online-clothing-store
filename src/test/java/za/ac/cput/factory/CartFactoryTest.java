@@ -1,6 +1,15 @@
 package za.ac.cput.factory;
-
+/**
+ * E-Commerce Web Application for selling clothes
+ * CartFactoryTest.java
+ * Test for the CartFactory
+ * Author: Kinzonzi Genereux Mukoko - 221477934
+ * Date: 16 May 2024
+ * */
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Cart;
 import za.ac.cput.domain.CartItem;
 import za.ac.cput.factory.CartFactory;
