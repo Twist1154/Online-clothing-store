@@ -3,11 +3,11 @@ import za.ac.cput.domain.Admin;
 import za.ac.cput.util.Helper;
 
 /*
- *User:java
- *User: Model Class
+ *AdminFactory:java
+ *Admin: Factory Class
  * Author: Luke Duffell
  * Student no: 217061567
- * Date: 27 March 2024
+ * Date: 17 May 2024
  */
 
 public class AdminFactory {

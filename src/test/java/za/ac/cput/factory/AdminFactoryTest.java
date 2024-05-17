@@ -5,6 +5,14 @@ import za.ac.cput.domain.Admin;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+ *AdminFactoryTest:java
+ *Admin: Factory Class Test
+ * Author: Luke Duffell
+ * Student no: 217061567
+ * Date: 17 May 2024
+ */
+
 class AdminFactoryTest {
 
     @Test
