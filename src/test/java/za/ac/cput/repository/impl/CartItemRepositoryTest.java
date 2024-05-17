@@ -1,5 +1,11 @@
 package za.ac.cput.repository.impl;
-
+/**
+ * E-Commerce Web Application for selling clothes
+ * CartItemRepositoryTest.java
+ * Test for the CartItemRepository
+ * Author: Kinzonzi Genereux Mukoko - 221477934
+ * Date: 16 May 2024
+ * */
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;

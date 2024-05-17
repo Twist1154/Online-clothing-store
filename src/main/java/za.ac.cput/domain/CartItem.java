@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
-
+/**
+ * E-Commerce Web Application for selling clothes
+ * CartItem.java
+ * This POJO class for the CartItem entity. Domain class using Builder Pattern
+ * Author: Kinzonzi Genereux Mukoko - 221477934
+ * Date: 14 May 2024
+ */
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

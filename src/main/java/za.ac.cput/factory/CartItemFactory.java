@@ -1,5 +1,11 @@
 package za.ac.cput.factory;
-
+/**
+ * E-Commerce Web Application for selling clothes
+ * CartItemFactory.java
+ * This class uses the Factory Pattern to create an instance of the CartItem entity
+ * Author: Kinzonzi Genereux Mukoko - 221477934
+ * Date: 14 May 2024
+ * */
 import za.ac.cput.domain.Cart;
 import za.ac.cput.domain.CartItem;
 import za.ac.cput.util.Helper;
