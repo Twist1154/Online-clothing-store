@@ -1,22 +1,28 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+import java.util.Objects;
+
 /*
- *User:java
- *User: Model Class
+ *OrderItem:java
+ *OrderItem: Model Class
  * Author: Luke Duffell
  * Student no: 217061567
- * Date: 27 March 2024
+ * Date: 17 May 2024
  */
 
+@Entity
 public class OrderItem {
+    @Id
     private String orderItemId;
     private int quantity;
     private double price;
 
-    public OrderItem(){
-    }
+    protected OrderItem(){}
 
-    private OrderItem(Builder builder){
+    public OrderItem(Builder builder){
         this.orderItemId = builder.orderItemId;
         this.quantity = builder.quantity;
         this.price = builder.price;
@@ -30,8 +36,19 @@ public class OrderItem {
         return quantity;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPrice() {return price;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderItem orderItem = (OrderItem) o;
+        return quantity == orderItem.quantity && Double.compare(price, orderItem.price) == 0 && Objects.equals(orderItemId, orderItem.orderItemId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(orderItemId, quantity, price);
     }
 
     @java.lang.Override
