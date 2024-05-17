@@ -8,10 +8,17 @@
 
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.util.Objects;
 
+@Entity
+@Table(name = "ProductReview")
 public class ProductReview {
     //Attributes
+    @Id
     private String productReviewID;
     private String customerID;
     private String productID;
