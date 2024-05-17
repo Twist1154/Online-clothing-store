@@ -1,21 +1,27 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+import java.util.Objects;
+
 /*
- *User:java
- *User: Model Class
+ *Admin:java
+ *Admin: Model Class
  * Author: Luke Duffell
  * Student no: 217061567
- * Date: 27 March 2024
+ * Date: 17 May 2024
  */
 
+@Entity
 public class Admin {
+    @Id
     private String adminId;
     private String privileges;
 
-    public Admin(){
-    }
+    protected Admin(){}
 
-    private Admin(Builder builder){
+    public Admin(Builder builder){
         this.adminId = builder.adminId;
         this.privileges = builder.privileges;
     }
@@ -24,8 +30,19 @@ public class Admin {
         return adminId;
     }
 
-    public String getPrivileges() {
-        return privileges;
+    public String getPrivileges() {return privileges;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Admin admin = (Admin) o;
+        return Objects.equals(adminId, admin.adminId) && Objects.equals(privileges, admin.privileges);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(adminId, privileges);
     }
 
     @java.lang.Override
