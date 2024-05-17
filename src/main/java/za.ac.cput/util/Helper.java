@@ -21,12 +21,15 @@ public class Helper {
         return s == null || s.isEmpty();
     }
 
-
     public static boolean isOrderNullorEmpty(Double s) {
         return s == null || Double.isNaN(s);
     }
 
     public static boolean isNullOrEmpty(List<Order> s) {
         return s == null || s.isEmpty();
+    }
+
+    public static boolean isValidRange(int rating) {
+        return rating > 0 && rating <= 5;
     }
 }

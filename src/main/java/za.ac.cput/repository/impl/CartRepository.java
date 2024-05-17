@@ -1,23 +1,22 @@
 package za.ac.cput.repository.impl;
 
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Cart;
-import za.ac.cput.domain.CartItem;
-import za.ac.cput.domain.Product;
 import za.ac.cput.repository.ICartRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public class CartRepositoryImpl implements ICartRepository {
+@Repository
+public class CartRepository implements ICartRepository {
 
     private static ICartRepository repository = null;
     private List<Cart> cartList;
 
-    private CartRepositoryImpl(){cartList = new ArrayList<Cart>();}
+    private CartRepository(){cartList = new ArrayList<Cart>();}
 
     public static ICartRepository getRepository(){
         if(repository == null){
-            repository = new CartRepositoryImpl();
+            repository = new CartRepository();
         }
         return repository;
     }

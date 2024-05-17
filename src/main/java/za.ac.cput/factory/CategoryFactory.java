@@ -15,19 +15,18 @@ import za.ac.cput.util.Helper;
 import java.util.List;
 
 public class CategoryFactory {
-    public static Category buildCategory(String categoryID, String categoryName, String categoryDescription){
-        if (Helper.isNullOrEmpty(categoryID) || Helper.isNullOrEmpty(categoryName) || Helper.isNullOrEmpty(categoryDescription))
+    public static Category buildCategory(String categoryID, String categoryName){
+        if (Helper.isNullOrEmpty(categoryID) || Helper.isNullOrEmpty(categoryName))
             return null;
 
         return new Category.Builder()
                 .setCategoryID(categoryID)
                 .setCategoryName(categoryName)
-                .setCategoryDescription(categoryDescription)
                 .build();
     }
 
-    public static Category buildCategory(String categoryName, String categoryDescription){
-        if (Helper.isNullOrEmpty(categoryName) || Helper.isNullOrEmpty(categoryDescription))
+    public static Category buildCategory(String categoryName){
+        if (Helper.isNullOrEmpty(categoryName))
             return null;
 
         String categoryID = Helper.generateId();
@@ -35,7 +34,6 @@ public class CategoryFactory {
         return new Category.Builder()
                 .setCategoryID(Helper.generateId())
                 .setCategoryName(categoryName)
-                .setCategoryDescription(categoryDescription)
                 .build();
     }
 }
