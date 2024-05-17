@@ -34,15 +34,22 @@ class CartRepositoryTest {
 
     @Test
     @Order(1)
-    void create(){
+    void setUp(){
         list.add(cItem);
+        assertNotNull(list);
+        System.out.println(list);
+    }
+
+    @Test
+    @Order(2)
+    void create(){
         Cart created = repository.create(cart);
         assertNotNull(created);
         System.out.println(created);
     }
 
     @Test
-    @Order(2)
+    @Order(3)
     void read(){
         Cart read = repository.read(cart.getCartID());
         assertNotNull(read);
@@ -50,7 +57,7 @@ class CartRepositoryTest {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     void update(){
         Cart newCart = new Cart.Builder().copy(cart).setcartID("#5522").build();
         Cart update = repository.update(newCart);
@@ -59,14 +66,14 @@ class CartRepositoryTest {
     }
 
     @Test
-    @Order(5)
+    @Order(6)
     void delete(){
         assertTrue(repository.delete(cart.getCartID()));
         System.out.println("Success: cart deleted");
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     void getall(){
         System.out.println(repository.getall());
     }
