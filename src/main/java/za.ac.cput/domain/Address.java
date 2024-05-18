@@ -2,19 +2,17 @@ package za.ac.cput.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+
+import java.io.Serializable;
 
 @Entity
-public class Address {
+public class Address implements Serializable {
     @Id
     private String addressID;
     private String street;
     private String city;
     private String province;
     private String zipCode;
-
-    @OneToOne(mappedBy = "address")
-    private User user;
 
     protected Address() {
     }
@@ -31,55 +29,40 @@ public class Address {
         return addressID;
     }
 
+    public void setAddressID(String addressID) {
+        this.addressID = addressID;
+    }
+
     public String getStreet() {
         return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getCity() {
         return city;
     }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getProvince() {
         return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public String getZipCode() {
         return zipCode;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Address address)) return false;
-
-        if (getAddressID() != null ? !getAddressID().equals(address.getAddressID()) : address.getAddressID() != null)
-            return false;
-        if (getStreet() != null ? !getStreet().equals(address.getStreet()) : address.getStreet() != null) return false;
-        if (getCity() != null ? !getCity().equals(address.getCity()) : address.getCity() != null) return false;
-        if (getProvince() != null ? !getProvince().equals(address.getProvince()) : address.getProvince() != null)
-            return false;
-        if (getZipCode() != null ? !getZipCode().equals(address.getZipCode()) : address.getZipCode() != null)
-            return false;
-        return getUser() != null ? getUser().equals(address.getUser()) : address.getUser() == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getAddressID() != null ? getAddressID().hashCode() : 0;
-        result = 31 * result + (getStreet() != null ? getStreet().hashCode() : 0);
-        result = 31 * result + (getCity() != null ? getCity().hashCode() : 0);
-        result = 31 * result + (getProvince() != null ? getProvince().hashCode() : 0);
-        result = 31 * result + (getZipCode() != null ? getZipCode().hashCode() : 0);
-        result = 31 * result + (getUser() != null ? getUser().hashCode() : 0);
-        return result;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     @Override

@@ -1,12 +1,11 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.*;
+
+import java.io.Serializable;
 
 @Entity
-public class User {
+public class User implements Serializable {
     @Id
     private String userID;
     private String firstName;
@@ -14,14 +13,14 @@ public class User {
     private String password;
     private String email;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "addressID")
     private Address address;
 
-    @OneToOne(mappedBy = "user")
-    private Customer customer;
+    private String customerID;
 
-    protected User() {}
+    protected User() {
+    }
 
     private User(Builder builder) {
         this.userID = builder.userID;
@@ -30,6 +29,7 @@ public class User {
         this.password = builder.password;
         this.email = builder.email;
         this.address = builder.address;
+        this.customerID = builder.customerID;
     }
 
     // Getters and Setters
@@ -82,12 +82,12 @@ public class User {
         this.address = address;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerID(String customerID) {
+        this.customerID = customerID;
     }
 
     @Override
@@ -99,6 +99,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", address=" + address +
+                ", customerID='" + customerID + '\'' +
                 '}';
     }
 
@@ -109,6 +110,7 @@ public class User {
         private String password;
         private String email;
         private Address address;
+        private String customerID;
 
         public Builder setUserID(String userID) {
             this.userID = userID;
@@ -140,13 +142,8 @@ public class User {
             return this;
         }
 
-        public Builder copy(User user) {
-            this.userID = user.userID;
-            this.firstName = user.firstName;
-            this.lastName = user.lastName;
-            this.password = user.password;
-            this.email = user.email;
-            this.address = user.address;
+        public Builder setCustomerID(String customerID) {
+            this.customerID = customerID;
             return this;
         }
 
