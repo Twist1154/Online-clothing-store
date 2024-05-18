@@ -2,6 +2,7 @@ package za.ac.cput.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -13,9 +14,10 @@ public class User {
     private String email;
     private String addressID;
 
-    protected User(){
+    @OneToOne(mappedBy = "user")
+    private Customer customer;
 
-    }
+    protected User() {}
 
     private User(Builder builder) {
         this.userID = builder.userID;
@@ -26,22 +28,66 @@ public class User {
         this.addressID = builder.addressID;
     }
 
-    public String getUserID() { return userID;}
+    public String getUserID() {
+        return userID;
+    }
 
-    public String getFirstName() {return firstName;}
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 
-    public String getLastName() {return lastName;}
+    public String getFirstName() {
+        return firstName;
+    }
 
-    public String getPassword() {return password;}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-    public String getEmail() {return email; }
+    public String getLastName() {
+        return lastName;
+    }
 
-    public String getAddressID() {return addressID;}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddressID() {
+        return addressID;
+    }
+
+    public void setAddressID(String addressID) {
+        this.addressID = addressID;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     @Override
     public String toString() {
         return "User{" +
-                "userID=" + userID +
+                "userID='" + userID + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
@@ -49,7 +95,8 @@ public class User {
                 ", addressID='" + addressID + '\'' +
                 '}';
     }
-    public static class Builder{
+
+    public static class Builder {
         private String userID;
         private String firstName;
         private String lastName;
@@ -87,7 +134,7 @@ public class User {
             return this;
         }
 
-        public Builder copy(User user){
+        public Builder copy(User user) {
             this.userID = user.userID;
             this.firstName = user.firstName;
             this.lastName = user.lastName;
@@ -97,8 +144,8 @@ public class User {
             return this;
         }
 
-        public User build(){return new User(this);}
+        public User build() {
+            return new User(this);
+        }
     }
-
-
 }
