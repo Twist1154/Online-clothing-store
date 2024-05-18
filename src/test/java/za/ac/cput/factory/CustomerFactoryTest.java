@@ -19,6 +19,7 @@ class CustomerFactoryTest {
         assertEquals("Premium", createdCustomer.getPrivelages());
         assertEquals("user123", createdCustomer.getUserID());
         customer = createdCustomer;
+        
     }
 
 }
