@@ -18,7 +18,7 @@ public class Customer {
 
     @OneToOne
     @JoinColumn(name = "userID")
-    private User userID;
+    private User user;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
@@ -28,11 +28,9 @@ public class Customer {
     private Customer(Builder builder) {
         this.customerId = builder.customerId;
         this.privileges = builder.privileges;
-        this.userID = builder.user;
+        this.user = builder.user;
         this.orders = builder.orders;
     }
-
-    // Getters and Setters
 
     public String getCustomerId() {
         return customerId;
@@ -50,12 +48,12 @@ public class Customer {
         this.privileges = privileges;
     }
 
-    public User getUserID() {
-        return userID;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserID(User userID) {
-        this.userID = userID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Order> getOrders() {
@@ -72,14 +70,14 @@ public class Customer {
         if (!(o instanceof Customer customer)) return false;
         if (customerId != null ? !customerId.equals(customer.customerId) : customer.customerId != null) return false;
         if (privileges != null ? !privileges.equals(customer.privileges) : customer.privileges != null) return false;
-        return userID != null ? userID.equals(customer.userID) : customer.userID == null;
+        return user != null ? user.equals(customer.user) : customer.user == null;
     }
 
     @Override
     public int hashCode() {
         int result = customerId != null ? customerId.hashCode() : 0;
         result = 31 * result + (privileges != null ? privileges.hashCode() : 0);
-        result = 31 * result + (userID != null ? userID.hashCode() : 0);
+        result = 31 * result + (user != null ? user.hashCode() : 0);
         return result;
     }
 
@@ -88,7 +86,7 @@ public class Customer {
         return "Customer{" +
                 "customerId='" + customerId + '\'' +
                 ", privileges='" + privileges + '\'' +
-                ", userID=" + userID +
+                ", user=" + user +
                 ", orders=" + orders +
                 '}';
     }
@@ -122,7 +120,7 @@ public class Customer {
         public Builder copy(Customer customer) {
             this.customerId = customer.customerId;
             this.privileges = customer.privileges;
-            this.user = customer.userID;
+            this.user = customer.user;
             this.orders = customer.orders;
             return this;
         }

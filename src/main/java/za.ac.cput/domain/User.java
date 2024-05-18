@@ -3,6 +3,7 @@ package za.ac.cput.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 public class User {
@@ -12,7 +13,10 @@ public class User {
     private String lastName;
     private String password;
     private String email;
-    private String addressID;
+
+    @OneToOne
+    @JoinColumn(name = "addressID")
+    private Address address;
 
     @OneToOne(mappedBy = "user")
     private Customer customer;
@@ -25,8 +29,10 @@ public class User {
         this.lastName = builder.lastName;
         this.password = builder.password;
         this.email = builder.email;
-        this.addressID = builder.addressID;
+        this.address = builder.address;
     }
+
+    // Getters and Setters
 
     public String getUserID() {
         return userID;
@@ -68,12 +74,12 @@ public class User {
         this.email = email;
     }
 
-    public String getAddressID() {
-        return addressID;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressID(String addressID) {
-        this.addressID = addressID;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Customer getCustomer() {
@@ -92,7 +98,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", addressID='" + addressID + '\'' +
+                ", address=" + address +
                 '}';
     }
 
@@ -102,7 +108,7 @@ public class User {
         private String lastName;
         private String password;
         private String email;
-        private String addressID;
+        private Address address;
 
         public Builder setUserID(String userID) {
             this.userID = userID;
@@ -129,8 +135,8 @@ public class User {
             return this;
         }
 
-        public Builder setAddressID(String addressID) {
-            this.addressID = addressID;
+        public Builder setAddress(Address address) {
+            this.address = address;
             return this;
         }
 
@@ -140,7 +146,7 @@ public class User {
             this.lastName = user.lastName;
             this.password = user.password;
             this.email = user.email;
-            this.addressID = user.addressID;
+            this.address = user.address;
             return this;
         }
 
