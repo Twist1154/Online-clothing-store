@@ -1,8 +1,8 @@
 package za.ac.cput.service;
 /*
- *Product:java
- *Product: Service interface Class
- * Author: Zachariah Matsimella
+ * Order: java
+ * Order: Model Class
+ * Author: Rethabile Ntsekhe (220455430)
  * Date: 18 May 2024
  */
 import java.util.List;

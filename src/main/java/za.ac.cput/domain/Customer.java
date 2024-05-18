@@ -14,8 +14,11 @@ import java.util.List;
 public class Customer {
     @Id
     private String customerId;
-    private String privelages;
-    private String userID;
+    private String privileges;
+
+    @OneToOne
+    @JoinColumn(name = "userID")
+    private User user;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
@@ -24,12 +27,10 @@ public class Customer {
 
     private Customer(Builder builder) {
         this.customerId = builder.customerId;
-        this.privelages = builder.privelages;
-        this.userID = builder.userID;
+        this.privileges = builder.privileges;
+        this.user = builder.user;
         this.orders = builder.orders;
     }
-
-    // Getters and Setters
 
     public String getCustomerId() {
         return customerId;
@@ -39,20 +40,20 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public String getPrivelages() {
-        return privelages;
+    public String getPrivileges() {
+        return privileges;
     }
 
-    public void setPrivelages(String privelages) {
-        this.privelages = privelages;
+    public void setPrivileges(String privileges) {
+        this.privileges = privileges;
     }
 
-    public String getUserID() {
-        return userID;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Order> getOrders() {
@@ -68,15 +69,15 @@ public class Customer {
         if (this == o) return true;
         if (!(o instanceof Customer customer)) return false;
         if (customerId != null ? !customerId.equals(customer.customerId) : customer.customerId != null) return false;
-        if (privelages != null ? !privelages.equals(customer.privelages) : customer.privelages != null) return false;
-        return userID != null ? userID.equals(customer.userID) : customer.userID == null;
+        if (privileges != null ? !privileges.equals(customer.privileges) : customer.privileges != null) return false;
+        return user != null ? user.equals(customer.user) : customer.user == null;
     }
 
     @Override
     public int hashCode() {
         int result = customerId != null ? customerId.hashCode() : 0;
-        result = 31 * result + (privelages != null ? privelages.hashCode() : 0);
-        result = 31 * result + (userID != null ? userID.hashCode() : 0);
+        result = 31 * result + (privileges != null ? privileges.hashCode() : 0);
+        result = 31 * result + (user != null ? user.hashCode() : 0);
         return result;
     }
 
@@ -84,16 +85,16 @@ public class Customer {
     public String toString() {
         return "Customer{" +
                 "customerId='" + customerId + '\'' +
-                ", privelages='" + privelages + '\'' +
-                ", userID='" + userID + '\'' +
+                ", privileges='" + privileges + '\'' +
+                ", user=" + user +
                 ", orders=" + orders +
                 '}';
     }
 
     public static class Builder {
         private String customerId;
-        private String privelages;
-        private String userID;
+        private String privileges;
+        private User user;
         private List<Order> orders;
 
         public Builder setCustomerId(String customerId) {
@@ -101,13 +102,13 @@ public class Customer {
             return this;
         }
 
-        public Builder setPrivelages(String privelages) {
-            this.privelages = privelages;
+        public Builder setPrivileges(String privileges) {
+            this.privileges = privileges;
             return this;
         }
 
-        public Builder setUserID(String userID) {
-            this.userID = userID;
+        public Builder setUser(User user) {
+            this.user = user;
             return this;
         }
 
@@ -118,8 +119,8 @@ public class Customer {
 
         public Builder copy(Customer customer) {
             this.customerId = customer.customerId;
-            this.privelages = customer.privelages;
-            this.userID = customer.userID;
+            this.privileges = customer.privileges;
+            this.user = customer.user;
             this.orders = customer.orders;
             return this;
         }
