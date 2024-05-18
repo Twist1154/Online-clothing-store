@@ -6,11 +6,13 @@ package za.ac.cput.repository;
  * Author: Kinzonzi Genereux Mukoko - 221477934
  * Date: 16 May 2024
  * */
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Cart;
 import za.ac.cput.domain.CartItem;
 
 import java.util.List;
-
-public interface ICartItemRepository extends IRepository<CartItem, String>{
+@Repository
+public interface ICartItemRepository extends JpaRepository<CartItem, String> {
     List<CartItem> getall();
 }

@@ -6,7 +6,8 @@ package za.ac.cput.repository;
  * Date: 21 March 2024
  */
 
-@Deprecated
+import za.ac.cput.domain.Customer;
+
 public interface IRepository<T, ID> {
     T create(T t);
 

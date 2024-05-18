@@ -25,7 +25,7 @@ public class CustomerFactory {
         }
         return new Customer.Builder()
                 .setCustomerId(customerId)
-                .setPrivileges(privelages)
+                .setPrivelages(privelages)
                 .setUserID(userID)
                 .build();
 

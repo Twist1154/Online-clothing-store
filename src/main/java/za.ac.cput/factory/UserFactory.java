@@ -10,7 +10,8 @@ public class UserFactory {
         ||  Helper.isNullOrEmpty(addressID))
               return null;
 
-        if(!Helper.isEmailValid(email) || Helper.isNullOrEmpty(email)) return null;
+        String regex = "^(.+)@(\\S+)$";
+        if(!Helper.isEmailValid(email, regex) || Helper.isNullOrEmpty(email)) return null;
 
         return new User.Builder().setUserID(userID).setFirstName(firstName).setLastName(lastName)
                 .setEmail(email).setPassword(password).setAddressID(addressID)
