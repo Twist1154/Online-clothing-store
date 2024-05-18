@@ -1,34 +1,36 @@
 package za.ac.cput.domain;
 
-/*
- * CustomerFactory: java
- * CustomerFactory: Model Class
- * Author: Rethabile Ntsekhe (220455430)
- * Date: 17 May 2024
- */
-
 import jakarta.persistence.*;
+
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Customer {
+public class Customer implements Serializable {
     @Id
     private String customerId;
     private String privileges;
 
+    private String userID;
+
     @OneToOne
-    @JoinColumn(name = "userID")
+    @JoinColumn(name = "userID", insertable = false, updatable = false)
     private User user;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
 
-    public Customer() {}
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "addressID", insertable = false, updatable = false)
+    private Address address;
+
+    protected Customer() {
+    }
 
     private Customer(Builder builder) {
         this.customerId = builder.customerId;
         this.privileges = builder.privileges;
-        this.user = builder.user;
+        this.userID = builder.userID;
         this.orders = builder.orders;
     }
 
@@ -48,6 +50,14 @@ public class Customer {
         this.privileges = privileges;
     }
 
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
     public User getUser() {
         return user;
     }
@@ -64,20 +74,28 @@ public class Customer {
         this.orders = orders;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Customer customer)) return false;
         if (customerId != null ? !customerId.equals(customer.customerId) : customer.customerId != null) return false;
         if (privileges != null ? !privileges.equals(customer.privileges) : customer.privileges != null) return false;
-        return user != null ? user.equals(customer.user) : customer.user == null;
+        return userID != null ? userID.equals(customer.userID) : customer.userID == null;
     }
 
     @Override
     public int hashCode() {
         int result = customerId != null ? customerId.hashCode() : 0;
         result = 31 * result + (privileges != null ? privileges.hashCode() : 0);
-        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + (userID != null ? userID.hashCode() : 0);
         return result;
     }
 
@@ -86,15 +104,17 @@ public class Customer {
         return "Customer{" +
                 "customerId='" + customerId + '\'' +
                 ", privileges='" + privileges + '\'' +
+                ", userID='" + userID + '\'' +
                 ", user=" + user +
                 ", orders=" + orders +
+                ", address=" + address +
                 '}';
     }
 
     public static class Builder {
         private String customerId;
         private String privileges;
-        private User user;
+        private String userID;
         private List<Order> orders;
 
         public Builder setCustomerId(String customerId) {
@@ -107,8 +127,8 @@ public class Customer {
             return this;
         }
 
-        public Builder setUser(User user) {
-            this.user = user;
+        public Builder setUserID(String userID) {
+            this.userID = userID;
             return this;
         }
 
@@ -120,7 +140,7 @@ public class Customer {
         public Builder copy(Customer customer) {
             this.customerId = customer.customerId;
             this.privileges = customer.privileges;
-            this.user = customer.user;
+            this.userID = customer.userID;
             this.orders = customer.orders;
             return this;
         }

@@ -12,7 +12,7 @@ public class CustomerFactoryTest {
     @Test
     void createCustomer() {
         // My User object to pass to the CustomerFactory
-        Address address = new Address.Builder()
+       /* Address address = new Address.Builder()
                 .setAddressID("1111")
                 .setStreet("16 Adderly street")
                 .setCity("Cape Town")
@@ -27,10 +27,9 @@ public class CustomerFactoryTest {
                 .setPassword("pass")
                 .setEmail("220455430@mycput.ac.za")
                 .setAddress(address)
-                .build();
+                .build();*/
 
-        // Customer object using the CustomerFactory
-        Customer createdCustomer = CustomerFactory.createCustomer("123", "Premium", user);
+        Customer createdCustomer = CustomerFactory.createCustomer("123", "Premium", "1234");
         System.out.println(createdCustomer);
 
         // Validate that the Customer object is not null and has correct attributes
