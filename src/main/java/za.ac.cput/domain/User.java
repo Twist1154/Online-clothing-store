@@ -15,7 +15,7 @@ public class User {
     private String email;
 
     @OneToOne
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "addressID")
     private Address address;
 
     @OneToOne(mappedBy = "user")
@@ -31,6 +31,8 @@ public class User {
         this.email = builder.email;
         this.address = builder.address;
     }
+
+    // Getters and Setters
 
     public String getUserID() {
         return userID;
