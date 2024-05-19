@@ -7,7 +7,7 @@ package za.ac.cput.repository;
  */
 
 import za.ac.cput.domain.Customer;
-
+@Deprecated
 public interface IRepository<T, ID> {
     T create(T t);
 
