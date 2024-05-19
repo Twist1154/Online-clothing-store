@@ -4,13 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.ProductImage;
 import za.ac.cput.service.ProductImageService;
-
 import java.util.List;
+
+/*
+ *Product:java
+ *Product: Controller Class
+ * Author: Zachariah Matsimella
+ * Date: 19 May 2024
+ */
 
 @RestController
 @RequestMapping("/productImage")
 public class ProductImageController {
-
     @Autowired
     private ProductImageService productImageService;
 
@@ -25,7 +30,7 @@ public class ProductImageController {
     }
 
     @PostMapping("/update")
-    public  ProductImage update(@RequestBody ProductImage productImage){
+    public ProductImage update(@RequestBody ProductImage productImage){
         return productImageService.update(productImage);
     }
 
