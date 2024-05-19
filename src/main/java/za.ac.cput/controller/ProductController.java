@@ -6,10 +6,16 @@ import za.ac.cput.domain.Product;
 import za.ac.cput.service.ProductService;
 import java.util.List;
 
+/*
+ *Product:java
+ *Product: Controller Class
+ * Author: Zachariah Matsimella
+ * Date: 19 May 2024
+ */
+
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-
     @Autowired
     private ProductService productService;
 
