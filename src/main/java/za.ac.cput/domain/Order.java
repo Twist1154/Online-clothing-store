@@ -37,7 +37,7 @@ public class Order implements Serializable {
         this.orderItems = builder.orderItems;
     }
 
-    public String getOrderID() {
+    public Long getOrderID() {
         return orderID;
     }
 
