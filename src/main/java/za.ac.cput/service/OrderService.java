@@ -6,24 +6,24 @@ import za.ac.cput.domain.Order;
 import za.ac.cput.repository.OrderRepository;
 
 import java.util.List;
+
 @Service
 public abstract class OrderService implements IOrderService {
     private OrderRepository repository;
 
     @Autowired
-    OrderService(OrderRepository repository) {
+    public OrderService(OrderRepository repository) {
         this.repository = repository;
     }
 
-   @Override
+    @Override
     public Order create(Order order) {
         return repository.save(order);
     }
 
 
-
     @Override
-    public Order read(Long  id) {
+    public Order read(Long id) {
         return repository.findById(id).orElse(null);
     }
 

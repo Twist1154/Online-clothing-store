@@ -6,18 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import za.ac.cput.domain.Order;
 import za.ac.cput.domain.OrderItem;
 import za.ac.cput.factory.OrderFactory;
-import za.ac.cput.repository.OrderRepository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 class OrderServiceTest {
 
-    @Autowired
+
     private OrderService orderService;
 
     private Order order;

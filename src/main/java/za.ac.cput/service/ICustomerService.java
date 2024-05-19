@@ -1,4 +1,10 @@
 package za.ac.cput.service;
 
-public interface ICustomerService {
+import za.ac.cput.domain.Customer;
+
+import java.util.List;
+
+public interface ICustomerService extends IService <Customer, Long> {
+    @Override
+    List<Customer> getAll();
 }

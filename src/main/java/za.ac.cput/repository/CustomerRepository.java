@@ -13,14 +13,5 @@ import java.util.List;
  */
 @Repository
 public interface CustomerRepository extends IRepository<Customer, Long> {
-
-/*    Customer create(Customer customer);
-
-    Customer read(String customerId);
-
-    Customer update(Customer customer);
-
-    boolean delete(String customerId);
-
-    List<Customer> getall();*/
+    List<Customer> getall();
 }
