@@ -24,7 +24,7 @@ public abstract class OrderService implements IOrderService {
 
     @Override
     public  Order read(String id) {
-        return repository.findById(Long.valueOf(id)).orElse(null);
+        return repository.findById(id).orElse(null);
     }
 
     @Override
