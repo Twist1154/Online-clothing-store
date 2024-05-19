@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Customer.Builder;
+import za.ac.cput.factory.CustomerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static za.ac.cput.factory.CustomerFactory.createCustomer;
@@ -49,7 +50,7 @@ class CustomerServiceTest {
 
     @Test
     void update() {
-        Customer customer2 = Builder.copy(customer1).setPrivileges("Standard").build();
+        Customer customer2 = CustomerFactory.createCustomer(customer1.setCustomerId("232323"));
         Customer updated = customerService.update(customer2);
         assertNotNull(updated);
         System.out.println(updated);
