@@ -23,7 +23,7 @@ public abstract class OrderService implements IOrderService {
 
 
     @Override
-    public static Order read(String id) {
+    public  Order read(String id) {
         return repository.findById(Long.valueOf(id)).orElse(null);
     }
 
