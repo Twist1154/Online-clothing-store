@@ -3,6 +3,7 @@ package za.ac.cput.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Order;
 import za.ac.cput.domain.OrderItem;
 import za.ac.cput.factory.OrderFactory;
@@ -17,6 +18,7 @@ class OrderServiceTest {
 
 
     private OrderService orderService;
+
 
     private Order order;
     @BeforeEach
@@ -55,6 +57,9 @@ class OrderServiceTest {
 
     @Test
     void read() {
+        Order read = OrderService.read(order.getOrderID());
+        assertNotNull(read);
+        System.out.println(read);
     }
 
     @Test

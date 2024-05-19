@@ -3,7 +3,6 @@ package za.ac.cput.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import za.ac.cput.domain.Cart;
 import za.ac.cput.domain.Customer;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -13,13 +12,14 @@ class CustomerServiceTest {
 
     @Autowired
     private CustomerService customerService;
-private Customer customer;
-private Customer customer1;
+    private Customer customer;
+    private Customer customer1;
+
     @BeforeEach
     void setUp() {
-        customer =  createCustomer("12345L","Premium","124567");
+        customer = createCustomer("12345L", "Premium", "124567");
 
-        customer1 =  createCustomer("67890L","basic","77787");
+        customer1 = createCustomer("67890L", "basic", "77787");
         assertNotNull(customer);
         assertNotNull(customer1);
         System.out.println(customer);
