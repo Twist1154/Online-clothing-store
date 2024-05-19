@@ -13,5 +13,5 @@ import za.ac.cput.domain.CartItem;
 import java.util.List;
 @Repository
 public interface CartItemRepository extends JpaRepository<CartItem, String> {
-    List<CartItem> getall();
+    CartItem findCartItemByCartID(String cartId);
 }
