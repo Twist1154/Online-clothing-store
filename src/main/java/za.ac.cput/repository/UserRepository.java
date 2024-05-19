@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository <User, String> {
-    User findUserbyUserId(String userID);
+    //User findUserbyUserId(String userID);
 
   //  void deleteUserByUserID(String userID);
 

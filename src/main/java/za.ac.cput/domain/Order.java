@@ -8,10 +8,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
-public class Order{
+public class Order implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderID;
+    private String orderID;
     private String customerID;
     private String addressID;
     private LocalDateTime orderDate;
@@ -26,9 +25,7 @@ public class Order{
     @CollectionTable(name = "OrderItem", joinColumns = @JoinColumn(name = "order_id"))
     private List<OrderItem> orderItems;
 
-    public Order(){
-
-    }
+    public Order() {}
 
     public Order(Builder builder) {
         this.orderID = builder.orderID;
@@ -40,7 +37,7 @@ public class Order{
         this.orderItems = builder.orderItems;
     }
 
-    public Long getOrderID() {
+    public String getOrderID() {
         return orderID;
     }
 
@@ -112,7 +109,7 @@ public class Order{
     }
 
     public static class Builder {
-        private Long orderID;
+        private String orderID;
         private String customerID;
         private String addressID;
         private LocalDateTime orderDate;
@@ -120,9 +117,7 @@ public class Order{
         private String status;
         private List<OrderItem> orderItems;
 
-
-
-        public Builder setOrderID(Long orderID) {
+        public Builder setOrderID(String orderID) {
             this.orderID = orderID;
             return this;
         }
@@ -156,15 +151,7 @@ public class Order{
             this.orderItems = orderItems;
             return this;
         }
-        public Builder copy(Order order) {
-            this.orderID = order.orderID;
-            this.customerID = order.customerID;
-            this.addressID = order.addressID;
-            this.orderDate = order.orderDate;
-            this.totalPrice = order.totalPrice;
-            this.status = order.status;
-            return this;
-        }
+
         public Order build() {
             return new Order(this);
         }
