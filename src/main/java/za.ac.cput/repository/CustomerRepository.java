@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Customer;
 
 import java.util.List;
+import java.util.Optional;
 
 /*
  *CustomerRepository :java
@@ -14,4 +15,6 @@ import java.util.List;
 @Repository
 public interface CustomerRepository extends IRepository<Customer, Long> {
     List<Customer> getall();
+
+    Optional<Customer> findById(String id);
 }

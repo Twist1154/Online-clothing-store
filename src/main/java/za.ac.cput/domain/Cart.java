@@ -23,7 +23,7 @@ public class Cart {
     @ElementCollection
     @CollectionTable(
             name="CartItem",
-            joinColumns=@JoinColumn(name="CartItemId")
+            joinColumns=@JoinColumn(name="cart_id")
     )
     @Column(name="Cart_Items")
     private List<CartItem> cartItems;
