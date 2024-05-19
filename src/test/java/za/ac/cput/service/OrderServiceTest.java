@@ -1,19 +1,28 @@
-package za.ac.cput.factory;
+package za.ac.cput.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import za.ac.cput.domain.Order;
 import za.ac.cput.domain.OrderItem;
+import za.ac.cput.factory.OrderFactory;
+import za.ac.cput.repository.OrderRepository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
-public class OrderFactoryTest {
+class OrderServiceTest {
 
-    @Test
-    public void testCreateOrder() {
+    @Autowired
+    private OrderService orderService;
+
+    private Order order;
+    @BeforeEach
+    void setUp() {
         // Creating test data
         Long orderID = 11111113445L;
         String customerID = "1001";
@@ -37,14 +46,24 @@ public class OrderFactoryTest {
 
         Order order = OrderFactory.createOrder(orderID, customerID, orderDate, orderItems, totalPrice, status, addressID);
 
-        // Asserting that the created order is not null
-        assertNotNull(order);
-        System.out.println(order);
-        // Asserting that the order attributes match the provided values
-        assertEquals(orderID, order.getOrderID());
-        assertEquals(customerID, order.getCustomerID());
-        assertEquals(orderDate, order.getOrderDate());
-        assertEquals(orderItems, order.getOrderItems());
-        assertEquals(totalPrice, order.getTotalPrice());
+    }
+
+    @Test
+    void create() {
+        Order createdOrder = orderService.create(order);
+        assertNotNull(createdOrder);
+        assertEquals(order.getOrderID(), createdOrder.getOrderID());
+    }
+
+    @Test
+    void read() {
+    }
+
+    @Test
+    void update() {
+    }
+
+    @Test
+    void getAll() {
     }
 }

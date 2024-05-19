@@ -38,4 +38,8 @@ public class Helper {
                 .matcher(email)
                 .matches();
     }
+
+    public static boolean isNullOrEmpty(Long l) {
+        return l == null;
+    }
 }

@@ -6,15 +6,15 @@ import za.ac.cput.domain.Customer;
 import java.util.List;
 
 /*
- *CustomerRepo :java
+ *CustomerRepository :java
  * Author: Rethabile Ntsekhe
  * Student num: 22045540
  * Date: 17 May 2024
  */
 @Repository
-public interface CustomerRepo extends IRepository<Customer, String> {
+public interface CustomerRepository extends IRepository<Customer, Long> {
 
-    Customer create(Customer customer);
+/*    Customer create(Customer customer);
 
     Customer read(String customerId);
 
@@ -22,5 +22,5 @@ public interface CustomerRepo extends IRepository<Customer, String> {
 
     boolean delete(String customerId);
 
-    List<Customer> getall();
+    List<Customer> getall();*/
 }

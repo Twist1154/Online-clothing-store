@@ -7,9 +7,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-public class Order implements Serializable {
+public class Order{
     @Id
-    private String orderID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long orderID;
     private String customerID;
     private String addressID;
     private LocalDateTime orderDate;
@@ -24,7 +25,9 @@ public class Order implements Serializable {
     @CollectionTable(name = "OrderItem", joinColumns = @JoinColumn(name = "order_id"))
     private List<OrderItem> orderItems;
 
-    public Order() {}
+    public Order(){
+
+    }
 
     public Order(Builder builder) {
         this.orderID = builder.orderID;
@@ -36,7 +39,7 @@ public class Order implements Serializable {
         this.orderItems = builder.orderItems;
     }
 
-    public String getOrderID() {
+    public Long getOrderID() {
         return orderID;
     }
 
@@ -108,7 +111,7 @@ public class Order implements Serializable {
     }
 
     public static class Builder {
-        private String orderID;
+        private Long orderID;
         private String customerID;
         private String addressID;
         private LocalDateTime orderDate;
@@ -116,7 +119,9 @@ public class Order implements Serializable {
         private String status;
         private List<OrderItem> orderItems;
 
-        public Builder setOrderID(String orderID) {
+
+
+        public Builder setOrderID(Long orderID) {
             this.orderID = orderID;
             return this;
         }
@@ -150,7 +155,15 @@ public class Order implements Serializable {
             this.orderItems = orderItems;
             return this;
         }
-
+        public Builder copy(Order order) {
+            this.orderID = order.orderID;
+            this.customerID = order.customerID;
+            this.addressID = order.addressID;
+            this.orderDate = order.orderDate;
+            this.totalPrice = order.totalPrice;
+            this.status = order.status;
+            return this;
+        }
         public Order build() {
             return new Order(this);
         }
