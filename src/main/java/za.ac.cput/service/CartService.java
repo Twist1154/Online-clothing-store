@@ -8,12 +8,14 @@ import za.ac.cput.repository.CartRepository;
 import java.util.List;
 
 @Service
-public class CartService implements ICartService{
+public class CartService implements ICartService {
 
     private CartRepository repository;
 
     @Autowired
-    CartService(CartRepository repository){this.repository = repository;}
+    CartService(CartRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public Cart create(Cart cart) {

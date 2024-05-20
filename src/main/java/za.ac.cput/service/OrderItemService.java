@@ -20,17 +20,27 @@ public class OrderItemService implements IOrderItemService {
     private OrderItemRepository repository;
 
     @Autowired
-    OrderItemService(OrderItemRepository repository) {this.repository = repository;}
+    OrderItemService(OrderItemRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
-    public OrderItem create(OrderItem orderItem) {return repository.save(orderItem);}
+    public OrderItem create(OrderItem orderItem) {
+        return repository.save(orderItem);
+    }
 
     @Override
-    public OrderItem read(Long id) {return repository.findById(String.valueOf(id)).orElse(null);}
+    public OrderItem read(Long id) {
+        return repository.findById(String.valueOf(id)).orElse(null);
+    }
 
     @Override
-    public OrderItem update(OrderItem orderItem) {return repository.save(orderItem);}
+    public OrderItem update(OrderItem orderItem) {
+        return repository.save(orderItem);
+    }
 
     @Override
-    public List<OrderItem> getAll() {return repository.findAll();}
+    public List<OrderItem> getAll() {
+        return repository.findAll();
+    }
 }

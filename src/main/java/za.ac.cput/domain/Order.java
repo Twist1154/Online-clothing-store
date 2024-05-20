@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "orders")
@@ -66,40 +67,45 @@ public class Order implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Order order)) return false;
-        if (Double.compare(order.totalPrice, totalPrice) != 0) return false;
-        if (orderID != null ? !orderID.equals(order.orderID) : order.orderID != null) return false;
-        if (customerID != null ? !customerID.equals(order.customerID) : order.customerID != null) return false;
-        if (addressID != null ? !addressID.equals(order.addressID) : order.addressID != null) return false;
-        if (orderDate != null ? !orderDate.equals(order.orderDate) : order.orderDate != null) return false;
-        return status != null ? status.equals(order.status) : order.status == null;
+
+        if (Double.compare(getTotalPrice(), order.getTotalPrice()) != 0) return false;
+        if (getOrderID() != null ? !getOrderID().equals(order.getOrderID()) : order.getOrderID() != null) return false;
+        if (getCustomerID() != null ? !getCustomerID().equals(order.getCustomerID()) : order.getCustomerID() != null)
+            return false;
+        if (getAddressID() != null ? !getAddressID().equals(order.getAddressID()) : order.getAddressID() != null)
+            return false;
+        if (getOrderDate() != null ? !getOrderDate().equals(order.getOrderDate()) : order.getOrderDate() != null)
+            return false;
+        if (getStatus() != null ? !getStatus().equals(order.getStatus()) : order.getStatus() != null) return false;
+        return Objects.equals(orderItemsID, order.orderItemsID);
     }
 
     @Override
     public int hashCode() {
         int result;
         long temp;
-        result = orderID != null ? orderID.hashCode() : 0;
-        result = 31 * result + (customerID != null ? customerID.hashCode() : 0);
-        result = 31 * result + (addressID != null ? addressID.hashCode() : 0);
-        result = 31 * result + (orderDate != null ? orderDate.hashCode() : 0);
-        temp = Double.doubleToLongBits(totalPrice);
+        result = getOrderID() != null ? getOrderID().hashCode() : 0;
+        result = 31 * result + (getCustomerID() != null ? getCustomerID().hashCode() : 0);
+        result = 31 * result + (getAddressID() != null ? getAddressID().hashCode() : 0);
+        result = 31 * result + (getOrderDate() != null ? getOrderDate().hashCode() : 0);
+        temp = Double.doubleToLongBits(getTotalPrice());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (getStatus() != null ? getStatus().hashCode() : 0);
+        result = 31 * result + (orderItemsID != null ? orderItemsID.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Order{" +
-                "orderID='" + orderID + '\'' +
-                ", customerID='" + customerID + '\'' +
-                ", addressID='" + addressID + '\'' +
-                ", orderDate=" + orderDate +
-                ", totalPrice=" + totalPrice +
-                ", status='" + status + '\'' +
-                ", orderItemsID=" + orderItemsID +
-                '}';
+        return "Order ID: " + orderID +
+                ", Customer ID: " + customerID +
+                ", Address ID: " + addressID +
+                ", Order Date: " + orderDate +
+                ", Total Price: $" + totalPrice +
+                ", Status: " + status +
+                ", Order Items ID: " + orderItemsID;
     }
+
 
     public static class Builder {
         private String  orderID;

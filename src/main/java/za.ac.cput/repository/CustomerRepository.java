@@ -12,7 +12,7 @@ import za.ac.cput.domain.Customer;
  * Date: 17 May 2024
  */
 @Repository
-public interface ICustomerRepository extends JpaRepository<Customer, String> {
+public interface CustomerRepository extends JpaRepository<Customer, String> {
     /* this is where I can Add my own Database methods extending from the ones already
      * defined in the JPA Repository
      * this is abstraction

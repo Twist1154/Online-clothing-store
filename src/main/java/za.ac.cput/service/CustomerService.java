@@ -4,7 +4,7 @@ package za.ac.cput.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Customer;
-import za.ac.cput.repository.ICustomerRepository;
+import za.ac.cput.repository.CustomerRepository;
 
 import java.util.List;
 
@@ -16,10 +16,10 @@ import java.util.List;
  */
 @Service
 public class CustomerService implements ICustomerService {
-    private final ICustomerRepository repository;
+    private CustomerRepository repository;
 
     @Autowired
-    public CustomerService(ICustomerRepository repository) {
+    CustomerService(CustomerRepository repository) {
         this.repository = repository;
     }
 

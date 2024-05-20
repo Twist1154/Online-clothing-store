@@ -3,16 +3,16 @@ package za.ac.cput.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Order;
-import za.ac.cput.repository.OrderRepository;
+import za.ac.cput.repository.IOrderRepository;
 
 import java.util.List;
 
 @Service
-public abstract class OrderService implements IOrderService {
-    private final OrderRepository repository;
+public class OrderService implements IOrderService {
+    private final IOrderRepository repository;
 
     @Autowired
-    public OrderService(OrderRepository repository) {
+    public OrderService(IOrderRepository repository) {
         this.repository = repository;
     }
 

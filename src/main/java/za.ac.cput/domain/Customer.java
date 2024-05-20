@@ -10,19 +10,7 @@ public class Customer implements Serializable {
     @Id
     private String customerId;
     private String privileges;
-
     private String userID;
-
-    @OneToOne
-    @JoinColumn(name = "userID", insertable = false, updatable = false)
-    private User user;
-
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "addressID", insertable = false, updatable = false)
-    private Address address;
 
     public Customer() {
     }
@@ -31,7 +19,6 @@ public class Customer implements Serializable {
         this.customerId = builder.customerId;
         this.privileges = builder.privileges;
         this.userID = builder.userID;
-        this.orders = builder.orders;
     }
 
     public String getCustomerId() {
@@ -58,29 +45,6 @@ public class Customer implements Serializable {
         this.userID = userID;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -105,9 +69,6 @@ public class Customer implements Serializable {
                 "customerId='" + customerId + '\'' +
                 ", privileges='" + privileges + '\'' +
                 ", userID='" + userID + '\'' +
-                ", user=" + user +
-                ", orders=" + orders +
-                ", address=" + address +
                 '}';
     }
 
@@ -115,7 +76,6 @@ public class Customer implements Serializable {
         private String customerId;
         private String privileges;
         private String userID;
-        private List<Order> orders;
 
         public Builder setCustomerId(String  customerId) {
             this.customerId = customerId;
@@ -132,16 +92,11 @@ public class Customer implements Serializable {
             return this;
         }
 
-        public Builder setOrders(List<Order> orders) {
-            this.orders = orders;
-            return this;
-        }
 
         public  Builder copy(Customer customer) {
             this.customerId = customer.customerId;
             this.privileges = customer.privileges;
             this.userID = customer.userID;
-            this.orders = customer.orders;
             return this;
         }
 
