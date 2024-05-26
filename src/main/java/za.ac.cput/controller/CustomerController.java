@@ -44,7 +44,7 @@ public class CustomerController {
 
     @GetMapping
     public ResponseEntity<List<Customer>> getAllCustomers() {
-        List<Customer> customers = customerService.getAll();
+        List<Customer> customers = customerService.findAll();
         return ResponseEntity.ok(customers);
     }
 

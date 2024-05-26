@@ -9,8 +9,6 @@ import za.ac.cput.domain.User;
 import za.ac.cput.factory.UserFactory;
 import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 @Configuration
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -56,6 +54,6 @@ class UserServiceTest {
     @Order(5)
     @Test
     void getAll() {
-        System.out.println(userService.getAll());
+        System.out.println(userService.findAll());
     }
 }

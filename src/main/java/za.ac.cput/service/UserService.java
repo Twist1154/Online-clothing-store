@@ -1,7 +1,6 @@
 package za.ac.cput.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.User;
 import za.ac.cput.repository.AddressRepository;
@@ -37,7 +36,7 @@ public class UserService implements IUserService {
 
 
     @Override
-    public List<User> getAll() {
+    public List<User> findAll() {
         return repository.findAll();
     }
 }

@@ -33,13 +33,15 @@ public class OrderService implements IOrderService {
     }
 
     @Override
+    public List<Order> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
     public void delete(String id) {
         repository.deleteById(id);
     }
 
 
-    @Override
-    public List<Order> getAll() {
-        return repository.findAll();
-    }
+
 }
