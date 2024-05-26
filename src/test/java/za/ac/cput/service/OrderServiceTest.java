@@ -38,7 +38,7 @@ class OrderServiceTest {
         String status = "Pending";
         String addressID = "A100";
 
-        Order order = OrderFactory.createOrder(orderID, customerID, orderDate, orderItemsID, totalPrice, status, addressID);
+        Order order = OrderFactory.buildOrder(orderID, customerID, orderDate, orderItemsID, totalPrice, status, addressID);
 
     }
 

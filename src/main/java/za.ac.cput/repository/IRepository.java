@@ -6,7 +6,7 @@ package za.ac.cput.repository;
  * Date: 21 March 2024
  */
 
-@Deprecated
+
 public interface IRepository<T, ID> {
     T create(T t);
 

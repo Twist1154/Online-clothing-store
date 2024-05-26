@@ -38,9 +38,6 @@ public class Helper {
     public static boolean isValidRange(int rating) {
         return rating >= 1 && rating <= 5;
     }
-    public static boolean isEmailValid(String emailAddress){
-        return EMAIL_PATTERN.matcher(emailAddress).matches();
-    }
 
 
     public static boolean isNullOrEmpty(Long l) {

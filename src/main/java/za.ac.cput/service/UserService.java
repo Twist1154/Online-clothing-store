@@ -22,7 +22,6 @@ public class UserService implements IUserService {
 
     @Override
     public User create(User user) {
-        addressrepository.save(user.getAddress());
         return repository.save(user);
     }
 
@@ -33,12 +32,16 @@ public class UserService implements IUserService {
 
     @Override
     public User update(User user) {
-        addressrepository.save(user.getAddress());
         return repository.save(user);
     }
 
     @Override
-    public List<User> getAll() {
+    public void delete(String id) {
+        repository.deleteById(id);
+    }
+
+    @Override
+    public List<User> findAll() {
         return repository.findAll();
     }
 }
