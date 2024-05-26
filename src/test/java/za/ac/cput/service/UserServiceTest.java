@@ -56,6 +56,6 @@ class UserServiceTest {
     @Order(5)
     @Test
     void getAll() {
-        System.out.println(userService.getAll());
+        System.out.println(userService.findAll());
     }
 }
