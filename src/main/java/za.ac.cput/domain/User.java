@@ -153,7 +153,7 @@ public class User /*implements Serializable*/ {
             this.lastName = user.lastName;
             this.password = user.password;
             this.email = user.email;
-            this.address = user.address;
+            this.addressID = user.addressID;
             this.customerID = user.customerID;
             return this;
         }
