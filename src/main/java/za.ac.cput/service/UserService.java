@@ -41,7 +41,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<User> findAll() {
+    public List<User> getAll() {
         return repository.findAll();
     }
 }
