@@ -20,7 +20,7 @@ class CartItemControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private final String BASE_URL = "http://localhost:8080/online-clothing-store/cartItem";
+    private final String BASE_URL = "http://localhost:8080/shopping_store/cartItem";
 
     private static CartItem cartItem;
 
