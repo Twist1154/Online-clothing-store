@@ -20,7 +20,7 @@ public class CustomerFactory {
      * @param userID the user ID associated with the customer
      * @return a new Customer instance if parameters are valid, otherwise null
      */
-    public static Customer createCustomer(String customerId, String privileges, String userID) {
+    public static Customer buildCustomer(String customerId, String privileges, String userID) {
 
         // Validate the input parameters using the Helper class
         if (Helper.isNullOrEmpty(customerId) ||
