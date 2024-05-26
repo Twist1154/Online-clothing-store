@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class OrderControllerTest {
 
-
+    @Autowired
     private OrderService orderService;
 
     @Autowired
@@ -42,13 +42,13 @@ class OrderControllerTest {
                 .setStatus("Pending")
                 .setOrderItemsID("1234")
                 .build();
-        order1 = OrderFactory.createOrder("11111113445L","1001",LocalDateTime.now(),"1234",150.0,"Pending","A100");
+        order1 = OrderFactory.buildOrder("11111113445L", "1001", LocalDateTime.now(), "1234", 150.0, "Pending", "A100");
     }
 
     @Test
     void create() {
-        String url = BASE_URL  + "/order/create";
-        ResponseEntity<Order> response = restTemplate.postForEntity(url, order, Order.class);
+        String url = BASE_URL + "/create";
+        ResponseEntity<Order> response = restTemplate.postForEntity(url, order1, Order.class);
 
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -58,10 +58,10 @@ class OrderControllerTest {
 
     @Test
     void read() {
-        String createUrl = BASE_URL  + "/order/create";
+        String createUrl = BASE_URL + "/create";
         restTemplate.postForEntity(createUrl, order, Order.class);
 
-        String url = BASE_URL  + "/order/read/" + order.getOrderID();
+        String url = BASE_URL + "/read/" + order.getOrderID();
         ResponseEntity<Order> response = restTemplate.getForEntity(url, Order.class);
 
         assertNotNull(response);
@@ -72,11 +72,11 @@ class OrderControllerTest {
 
     @Test
     void update() {
-        String createUrl = BASE_URL + "/order/create";
+        String createUrl = BASE_URL + "/create";
         restTemplate.postForEntity(createUrl, order, Order.class);
 
         order.setStatus("Updated Status");
-        String updateUrl = BASE_URL  + "/order/update";
+        String updateUrl = BASE_URL + "/update";
         ResponseEntity<Order> response = restTemplate.postForEntity(updateUrl, order, Order.class);
 
         assertNotNull(response);
@@ -87,10 +87,10 @@ class OrderControllerTest {
 
     @Test
     void getAll() {
-        String createUrl = BASE_URL  + "/order/create";
+        String createUrl = BASE_URL + "/create";
         restTemplate.postForEntity(createUrl, order, Order.class);
 
-        String url = BASE_URL + "/order/getAll";
+        String url = BASE_URL + "/getAll";
         ResponseEntity<Order[]> response = restTemplate.getForEntity(url, Order[].class);
 
         assertNotNull(response);

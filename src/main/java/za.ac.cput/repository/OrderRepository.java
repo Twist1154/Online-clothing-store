@@ -15,7 +15,7 @@ import java.util.Optional;
  * Student num: 22045540
  * Date: 17 May 2024
  */
-@Repository
+//@Repository
 public interface OrderRepository extends JpaRepository<Order, String> {
 /*
     List<Order> getall();

@@ -1,10 +1,8 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -31,7 +29,7 @@ public class Order implements Serializable {
         this.orderItemsID = builder.orderItemsID;
     }
 
-    public String  getOrderID() {
+    public String getOrderID() {
         return orderID;
     }
 
@@ -55,7 +53,7 @@ public class Order implements Serializable {
         return status;
     }
 
-    public String  getOrderItems() {
+    public String getOrderItemsID() {
         return orderItemsID;
     }
 
@@ -67,17 +65,13 @@ public class Order implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Order order)) return false;
-
-        if (Double.compare(getTotalPrice(), order.getTotalPrice()) != 0) return false;
-        if (getOrderID() != null ? !getOrderID().equals(order.getOrderID()) : order.getOrderID() != null) return false;
-        if (getCustomerID() != null ? !getCustomerID().equals(order.getCustomerID()) : order.getCustomerID() != null)
-            return false;
-        if (getAddressID() != null ? !getAddressID().equals(order.getAddressID()) : order.getAddressID() != null)
-            return false;
-        if (getOrderDate() != null ? !getOrderDate().equals(order.getOrderDate()) : order.getOrderDate() != null)
-            return false;
-        if (getStatus() != null ? !getStatus().equals(order.getStatus()) : order.getStatus() != null) return false;
-        return Objects.equals(orderItemsID, order.orderItemsID);
+        if (Double.compare(order.getTotalPrice(), getTotalPrice()) != 0) return false;
+        if (!Objects.equals(getOrderID(), order.getOrderID())) return false;
+        if (!Objects.equals(getCustomerID(), order.getCustomerID())) return false;
+        if (!Objects.equals(getAddressID(), order.getAddressID())) return false;
+        if (!Objects.equals(getOrderDate(), order.getOrderDate())) return false;
+        if (!Objects.equals(getStatus(), order.getStatus())) return false;
+        return Objects.equals(getOrderItemsID(), order.getOrderItemsID());
     }
 
     @Override
@@ -91,24 +85,25 @@ public class Order implements Serializable {
         temp = Double.doubleToLongBits(getTotalPrice());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (getStatus() != null ? getStatus().hashCode() : 0);
-        result = 31 * result + (orderItemsID != null ? orderItemsID.hashCode() : 0);
+        result = 31 * result + (getOrderItemsID() != null ? getOrderItemsID().hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Order ID: " + orderID +
-                ", Customer ID: " + customerID +
-                ", Address ID: " + addressID +
-                ", Order Date: " + orderDate +
-                ", Total Price: $" + totalPrice +
-                ", Status: " + status +
-                ", Order Items ID: " + orderItemsID;
+        return "Order{" +
+                "orderID='" + orderID + '\'' +
+                ", customerID='" + customerID + '\'' +
+                ", addressID='" + addressID + '\'' +
+                ", orderDate=" + orderDate +
+                ", totalPrice=" + totalPrice +
+                ", status='" + status + '\'' +
+                ", orderItemsID='" + orderItemsID + '\'' +
+                '}';
     }
 
-
     public static class Builder {
-        private String  orderID;
+        private String orderID;
         private String customerID;
         private String addressID;
         private LocalDateTime orderDate;
@@ -116,8 +111,7 @@ public class Order implements Serializable {
         private String status;
         private String orderItemsID;
 
-
-        public Builder setOrderID(String  orderID) {
+        public Builder setOrderID(String orderID) {
             this.orderID = orderID;
             return this;
         }
@@ -142,7 +136,6 @@ public class Order implements Serializable {
             return this;
         }
 
-
         public Builder setStatus(String status) {
             this.status = status;
             return this;
@@ -152,16 +145,18 @@ public class Order implements Serializable {
             this.orderItemsID = orderItemsID;
             return this;
         }
+
         public Builder copy(Order order) {
             this.orderID = order.orderID;
             this.customerID = order.customerID;
             this.addressID = order.addressID;
             this.orderDate = order.orderDate;
             this.totalPrice = order.totalPrice;
-            this.orderItemsID = order.orderItemsID;
             this.status = order.status;
+            this.orderItemsID = order.orderItemsID;
             return this;
         }
+
         public Order build() {
             return new Order(this);
         }

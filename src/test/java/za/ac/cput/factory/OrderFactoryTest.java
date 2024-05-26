@@ -25,7 +25,7 @@ public class OrderFactoryTest {
         String status = "Pending";
         String addressID = "A100";
 
-        Order order = OrderFactory.createOrder(orderID, customerID, orderDate, orderItemsID, totalPrice, status, addressID);
+        Order order = OrderFactory.buildOrder(orderID, customerID, orderDate, orderItemsID, totalPrice, status, addressID);
 
         // Asserting that the created order is not null
         assertNotNull(order);
@@ -34,7 +34,7 @@ public class OrderFactoryTest {
         assertEquals(orderID, order.getOrderID());
         assertEquals(customerID, order.getCustomerID());
         assertEquals(orderDate, order.getOrderDate());
-        assertEquals(orderItemsID, order.getOrderItems());
+        assertEquals(orderItemsID, order.getOrderItemsID());
         assertEquals(totalPrice, order.getTotalPrice());
     }
 }
