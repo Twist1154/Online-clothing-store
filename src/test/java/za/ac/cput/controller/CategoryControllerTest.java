@@ -1,3 +1,10 @@
+/*
+ * CategoryControllerTest.java
+ * Controller test class for the Category
+ * Author: Mthandeni Mbobo (218223579)
+ * Date: 23 May 2024
+ * */
+
 package za.ac.cput.controller;
 
 import org.junit.jupiter.api.*;
