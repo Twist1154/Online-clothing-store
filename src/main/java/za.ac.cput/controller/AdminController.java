@@ -37,6 +37,6 @@ public class AdminController {
 
     @GetMapping("/getAll")
     public List<Admin> getAll(){
-        return adminService.getAll();
+        return adminService.findAll();
     }
 }

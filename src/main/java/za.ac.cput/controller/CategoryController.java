@@ -38,6 +38,6 @@ public class CategoryController {
 
     @GetMapping("/getAll")
     public List<Category> getAll(){
-        return categoryService.getAll();
+        return categoryService.findAll();
     }
 }

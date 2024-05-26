@@ -43,7 +43,7 @@ public class ProductImageService implements IProductImageService {
     }
 
     @Override
-    public List<ProductImage> getAll() {
+    public List<ProductImage> findAll() {
         return repository.findAll();
     }
 

@@ -31,5 +31,5 @@ public class AdminService implements IAdminService {
     public Admin update(Admin admin) {return repository.save(admin);}
 
     @Override
-    public List<Admin> getAll() {return repository.findAll();}
+    public List<Admin> findAll() {return repository.findAll();}
 }

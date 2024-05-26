@@ -54,6 +54,6 @@ class AdminServiceTest {
     @Test
     @Order(4)
     void getAll() {
-        System.out.println(service.getAll());
+        System.out.println(service.findAll());
     }
 }

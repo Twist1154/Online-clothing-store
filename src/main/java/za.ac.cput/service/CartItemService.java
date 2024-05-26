@@ -33,7 +33,7 @@ public class CartItemService implements ICartItemService{
     }
 
     @Override
-    public List<CartItem> getAll() {
+    public List<CartItem> findAll() {
         return repository.findAll();
     }
 }

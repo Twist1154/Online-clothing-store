@@ -67,7 +67,7 @@ class ProductControllerTest {
     @Order(4)
     @Test
     void getAll() {
-        String url = baseUrl + "/getAll";
+        String url = baseUrl + "/findAll";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);

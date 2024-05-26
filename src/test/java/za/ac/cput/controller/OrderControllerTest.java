@@ -90,7 +90,7 @@ class OrderControllerTest {
         String createUrl = BASE_URL + "/create";
         restTemplate.postForEntity(createUrl, order, Order.class);
 
-        String url = BASE_URL + "/getAll";
+        String url = BASE_URL + "/findAll";
         ResponseEntity<Order[]> response = restTemplate.getForEntity(url, Order[].class);
 
         assertNotNull(response);

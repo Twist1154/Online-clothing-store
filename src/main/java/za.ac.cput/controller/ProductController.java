@@ -36,6 +36,6 @@ public class ProductController {
 
     @GetMapping("/getAll")
     public List<Product> getAll(){
-        return productService.getAll();
+        return productService.findAll();
     }
 }
