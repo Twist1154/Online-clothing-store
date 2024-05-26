@@ -60,6 +60,6 @@ class CustomerServiceTest {
 
     @Test
     void getAll() {
-        System.out.println("All Customers" + customerService.getAll());
+        System.out.println("All Customers" + customerService.findAll());
     }
 }

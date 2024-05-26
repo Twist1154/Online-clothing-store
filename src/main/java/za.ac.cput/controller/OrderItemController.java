@@ -37,6 +37,6 @@ public class OrderItemController {
 
     @GetMapping("/getAll")
     public List<OrderItem> getAll(){
-        return orderItemService.getAll();
+        return orderItemService.findAll();
     }
 }
