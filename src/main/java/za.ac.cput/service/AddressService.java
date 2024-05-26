@@ -29,13 +29,10 @@ public class AddressService implements IAddressService{
         return repository.save(address);
     }
 
-    @Override
-    public void delete(String id) {
-        repository.deleteById(id);
-    }
+
 
     @Override
-    public List<Address> findAll() {
+    public List<Address> getAll() {
         return null;
     }
 

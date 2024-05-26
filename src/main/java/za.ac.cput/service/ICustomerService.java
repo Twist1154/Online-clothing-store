@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface ICustomerService extends IService<Customer, String> {
 
+//    void delete(String  id);
+    void delete(String id);
 
     List<Customer> findByPrivileges(String privileges);
 

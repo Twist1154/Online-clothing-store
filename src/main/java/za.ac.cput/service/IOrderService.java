@@ -11,4 +11,5 @@ import za.ac.cput.domain.Order;
 
 public interface IOrderService extends IService<Order, String >{
 
+    void delete(String  id);
 }
