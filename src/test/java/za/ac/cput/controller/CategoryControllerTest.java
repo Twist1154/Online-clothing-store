@@ -73,7 +73,7 @@ class CategoryControllerTest {
     @Test
     @Order(4)
     void getAll() {
-        String url = BASE_URL + "/getAll";
+        String url = BASE_URL + "/findAll";
         System.out.println("URL: " + url);
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);

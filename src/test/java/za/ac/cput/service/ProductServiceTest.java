@@ -69,6 +69,6 @@ class ProductServiceTest {
     @Order(5)
     @Test
     void getAll() {
-        System.out.println(productService.getAll());
+        System.out.println(productService.findAll());
     }
 }

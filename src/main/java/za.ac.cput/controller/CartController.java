@@ -30,6 +30,6 @@ public class CartController {
 
     @GetMapping("/getAll")
     public List<Cart> getAll(){
-        return cartService.getAll();
+        return cartService.findAll();
     }
 }
