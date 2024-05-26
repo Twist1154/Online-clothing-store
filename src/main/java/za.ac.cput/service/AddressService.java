@@ -30,9 +30,13 @@ public class AddressService implements IAddressService{
     }
 
     @Override
-    public List<Address> getAll() {
-        return repository.findAll();
+    public void delete(String id) {
+        repository.deleteById(id);
     }
 
+    @Override
+    public List<Address> findAll() {
+        return null;
+    }
 
 }
