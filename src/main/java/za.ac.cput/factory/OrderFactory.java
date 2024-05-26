@@ -1,11 +1,9 @@
 package za.ac.cput.factory;
 
 import za.ac.cput.domain.Order;
-import za.ac.cput.domain.OrderItem;
 import za.ac.cput.util.Helper;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /*
  * OrderFactory: java
@@ -27,9 +25,9 @@ public class OrderFactory {
      * @param addressID    The ID of the address where the order should be delivered.
      * @return             The created Order object, or null if any parameter is null or empty.
      */
-    public static Order createOrder(String orderID, String customerID, LocalDateTime orderDate,
-                                    String  orderItemsID, double totalPrice, String status,
-                                    String addressID) {
+    public static Order buildOrder(String orderID, String customerID, LocalDateTime orderDate,
+                                   String  orderItemsID, double totalPrice, String status,
+                                   String addressID) {
 
         if (Helper.isNullOrEmpty(orderID) ||
                 Helper.isNullOrEmpty(customerID) ||

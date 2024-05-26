@@ -26,7 +26,7 @@ public class CustomerFactoryTest {
                 .setLastName("Ntsekhe")
                 .setPassword("pass")
                 .setEmail("220455430@mycput.ac.za")
-                .setAddress(address)
+                .setAddressID("address")
                 .build();
 
         Customer createdCustomer = CustomerFactory.createCustomer("23L", "Premium", "1234");
@@ -36,6 +36,6 @@ public class CustomerFactoryTest {
         assertNotNull(createdCustomer);
         assertEquals("123", createdCustomer.getCustomerId());
         assertEquals("Premium", createdCustomer.getPrivileges());
-        assertEquals("user123", createdCustomer.getUser().getUserID());
+        assertEquals("user123", createdCustomer.getUserID());
     }
 }

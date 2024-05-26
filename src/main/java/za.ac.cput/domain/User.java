@@ -14,9 +14,7 @@ public class User /*implements Serializable*/ {
     private String password;
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "addressID")
-    private Address address;
+    private String addressID;
 
     private String customerID;
 
@@ -29,7 +27,7 @@ public class User /*implements Serializable*/ {
         this.lastName = builder.lastName;
         this.password = builder.password;
         this.email = builder.email;
-        this.address = builder.address;
+        this.addressID = builder.addressID;
         this.customerID = builder.customerID;
     }
 
@@ -55,8 +53,8 @@ public class User /*implements Serializable*/ {
     public String getEmail() {
         return email;
     }
-    public Address getAddress() {
-        return address;
+    public String getAddressID() {
+        return addressID;
     }
 
     public String getCustomerID() {
@@ -76,7 +74,8 @@ public class User /*implements Serializable*/ {
         if (getPassword() != null ? !getPassword().equals(user.getPassword()) : user.getPassword() != null)
             return false;
         if (getEmail() != null ? !getEmail().equals(user.getEmail()) : user.getEmail() != null) return false;
-        if (getAddress() != null ? !getAddress().equals(user.getAddress()) : user.getAddress() != null) return false;
+        if (getAddressID() != null ? !getAddressID().equals(user.getAddressID()) : user.getAddressID() != null)
+            return false;
         return getCustomerID() != null ? getCustomerID().equals(user.getCustomerID()) : user.getCustomerID() == null;
     }
 
@@ -87,7 +86,7 @@ public class User /*implements Serializable*/ {
         result = 31 * result + (getLastName() != null ? getLastName().hashCode() : 0);
         result = 31 * result + (getPassword() != null ? getPassword().hashCode() : 0);
         result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
-        result = 31 * result + (getAddress() != null ? getAddress().hashCode() : 0);
+        result = 31 * result + (getAddressID() != null ? getAddressID().hashCode() : 0);
         result = 31 * result + (getCustomerID() != null ? getCustomerID().hashCode() : 0);
         return result;
     }
@@ -100,7 +99,7 @@ public class User /*implements Serializable*/ {
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", address=" + address +
+                ", addressID=" + addressID +
                 ", customerID='" + customerID + '\'' +
                 '}';
     }
@@ -111,7 +110,7 @@ public class User /*implements Serializable*/ {
         private String lastName;
         private String password;
         private String email;
-        private Address address;
+        private String addressID;
         private String customerID;
 
         public Builder setUserID(String userID) {
@@ -139,8 +138,8 @@ public class User /*implements Serializable*/ {
             return this;
         }
 
-        public Builder setAddress(Address address) {
-            this.address = address;
+        public Builder setAddressID(String addressID) {
+            this.addressID = addressID;
             return this;
         }
 

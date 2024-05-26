@@ -18,7 +18,6 @@ class UserFactoryTest {
 //                .build();
 
 
-        User user = UserFactory.buildingUser("I7I775", "Nicole", "Smith", "password123", "nicole@example.com", "0076","Dorset","Joburg","Gauteng","7925");
 
 
         assertNotNull(user);
@@ -27,8 +26,7 @@ class UserFactoryTest {
         assertEquals("Smith", user.getLastName());
         assertEquals("password123", user.getPassword());
         assertEquals("nicole@example.com", user.getEmail());
-        assertNotNull(user.getAddress());
-        assertEquals("12345", user.getAddress().getAddressID());
+        assertEquals("12345", user.getAddressID());
 
         System.out.println(user);
     }

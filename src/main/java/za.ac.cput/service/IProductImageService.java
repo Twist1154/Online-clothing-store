@@ -7,7 +7,6 @@ package za.ac.cput.service;
  */
 import za.ac.cput.domain.ProductImage;
 
-import java.util.List;
 
 public interface IProductImageService extends IService<ProductImage, String>{
 }
