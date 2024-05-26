@@ -29,7 +29,7 @@ public class CustomerFactoryTest {
                 .setAddressID("address")
                 .build();
 
-        Customer createdCustomer = CustomerFactory.createCustomer("23L", "Premium", "1234");
+        Customer createdCustomer = CustomerFactory.buildCustomer("23L", "Premium", "1234");
         System.out.println(createdCustomer);
 
         // Validate that the Customer object is not null and has correct attributes

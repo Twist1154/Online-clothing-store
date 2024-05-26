@@ -8,7 +8,7 @@ import za.ac.cput.domain.Customer;
 import za.ac.cput.factory.CustomerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static za.ac.cput.factory.CustomerFactory.createCustomer;
+import static za.ac.cput.factory.CustomerFactory.buildCustomer;
 
 @SpringBootTest
 class CustomerServiceTest {
@@ -20,9 +20,9 @@ class CustomerServiceTest {
     @BeforeEach
     void setUp() {
         System.out.println("-------------------------------------------------------------------START");
-        customer = createCustomer("12345L", "Premium", "124567");
+        customer = buildCustomer("12345L", "Premium", "124567");
 
-        customer1 = createCustomer("67890L", "basic", "77787");
+        customer1 = buildCustomer("67890L", "basic", "77787");
         assertNotNull(customer);
         assertNotNull(customer1);
         System.out.println(customer);
@@ -52,7 +52,7 @@ class CustomerServiceTest {
 
     @Test
     void update() {
-        Customer customer2 = CustomerFactory.createCustomer("12345L","basic","7654321");
+        Customer customer2 = CustomerFactory.buildCustomer("12345L","basic","7654321");
         Customer updated = customerService.update(customer2);
         assertNotNull(updated);
         System.out.println(updated);
