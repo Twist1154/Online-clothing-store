@@ -62,7 +62,7 @@ class CartItemControllerTest {
 
     @Test
     void d_getAll() {
-        String url = BASE_URL + "/getAll";
+        String url = BASE_URL + "/findAll";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(url , HttpMethod.GET, entity, String.class);

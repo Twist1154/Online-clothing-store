@@ -36,6 +36,6 @@ public class ProductImageController {
 
     @GetMapping("/getAll")
     public List<ProductImage> getAll(){
-        return productImageService.getAll();
+        return productImageService.findAll();
     }
 }

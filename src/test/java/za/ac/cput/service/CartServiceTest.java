@@ -62,6 +62,6 @@ class CartServiceTest {
 
     @Test
     void getAll() {
-        System.out.println(cartService.getAll());
+        System.out.println(cartService.findAll());
     }
 }

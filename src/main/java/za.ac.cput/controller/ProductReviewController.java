@@ -43,6 +43,6 @@ public class ProductReviewController {
 
     @GetMapping("/getall")
     public List<ProductReview> getAll(){
-        return productReviewService.getAll();
+        return productReviewService.findAll();
     }
 }
