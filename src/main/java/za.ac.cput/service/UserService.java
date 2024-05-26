@@ -35,10 +35,6 @@ public class UserService implements IUserService {
         return repository.save(user);
     }
 
-    @Override
-    public void delete(String id) {
-        repository.deleteById(id);
-    }
 
     @Override
     public List<User> getAll() {
