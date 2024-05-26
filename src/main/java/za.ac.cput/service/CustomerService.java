@@ -46,7 +46,7 @@ public class CustomerService implements ICustomerService {
      * @return
      */
     @Override
-    public List<Customer> getAll() {
+    public List<Customer> findAll() {
         return customerRepository.findAll();
     }
 
