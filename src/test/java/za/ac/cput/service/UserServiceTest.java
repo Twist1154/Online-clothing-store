@@ -22,7 +22,7 @@ class UserServiceTest {
     @Order(1)
     @Test
     void setup(){
-        user1 = UserFactory.buildingUser("UD005","simple","Dlaini","ssfftteeyy", "Simple12@gmail.com", "102ADD","Long St","Lillies","WesternCape","2356");
+        user1 = UserFactory.buildingUser("UD005","simple","Dlaini","ssfftteeyy", "Simple12@gmail.com", "102ADD","Long St");
         assertNotNull(user1);
         System.out.println(user1);
     }
