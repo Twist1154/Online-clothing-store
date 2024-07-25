@@ -6,7 +6,7 @@ package za.ac.cput.util;
  * Date: 21 March 2024
  */
 
-import za.ac.cput.domain.Order;
+import za.ac.cput.domain.Orders;
 
 import java.util.List;
 import java.util.UUID;
@@ -31,7 +31,7 @@ public class Helper {
         return s == null || Double.isNaN(s);
     }
 
-    public static boolean isNullOrEmpty(List<Order> s) {
+    public static boolean isNullOrEmpty(List<Orders> s) {
         return s == null || s.isEmpty();
     }
 
