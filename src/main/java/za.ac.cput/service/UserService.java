@@ -3,7 +3,6 @@ package za.ac.cput.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.User;
-import za.ac.cput.repository.AddressRepository;
 import za.ac.cput.repository.UserRepository;
 
 import java.util.List;
@@ -24,8 +23,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User read(String s) {
-        return repository.findById(s).orElse(null);
+    public User read(String userID) {
+        return repository.findById(userID).orElse(null);
     }
 
     @Override
@@ -47,7 +46,4 @@ public class UserService implements IUserService {
     public List<User> findByLastName(String lastName) {
         return repository.findByLastName(lastName);
     }
-
-
 }
-

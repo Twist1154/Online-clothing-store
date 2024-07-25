@@ -9,12 +9,12 @@ public class User implements Serializable{
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY) // Add this if userID is auto-generated
     private String userID;
+
     private String firstName;
     private String lastName;
     private String password;
     private String email;
     private String addressID;
-
     private String customerID;
 
     protected User() {

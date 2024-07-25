@@ -14,5 +14,11 @@ public interface IUserService extends IService<User, String>{
      */
     List<User> findByEmail(String email);
 
+    /**
+     * Finds users by their last name.
+     *
+     * @param lastName the last name to search for
+     * @return a list of users with the given last name
+     */
     List<User> findByLastName(String lastName);
 }
