@@ -10,12 +10,11 @@ import java.util.List;
 
 @Service
 public class UserService implements IUserService {
-    private AddressRepository addressrepository;
-    private UserRepository repository;
-    @Autowired
 
-    public UserService(AddressRepository addressrepository, UserRepository repository) {
-        this.addressrepository = addressrepository;
+    private final UserRepository repository;
+
+    @Autowired
+    public UserService( UserRepository repository) {
         this.repository = repository;
     }
 
@@ -26,7 +25,7 @@ public class UserService implements IUserService {
 
     @Override
     public User read(String s) {
-        return repository.findUserbyUserId(s);
+        return repository.findById(s).orElse(null);
     }
 
     @Override
@@ -34,9 +33,21 @@ public class UserService implements IUserService {
         return repository.save(user);
     }
 
-
     @Override
     public List<User> findAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<User> findByEmail(String email) {
+        return repository.findByEmail(email);
+    }
+
+    @Override
+    public List<User> findByLastName(String lastName) {
+        return repository.findByLastName(lastName);
+    }
+
+
 }
+

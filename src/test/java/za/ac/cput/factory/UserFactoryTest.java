@@ -18,7 +18,7 @@ class UserFactoryTest {
                 .build();
 
 
-        User user = UserFactory.buildingUser("I7I775", "Nicole", "Smith", "password123", "nicole@example.com", "12345","115445");
+        User user = UserFactory.createUser("I7I775", "Nicole", "Smith", "password123", "nicole@example.com", "12345","115445");
 
 
         assertNotNull(user);
