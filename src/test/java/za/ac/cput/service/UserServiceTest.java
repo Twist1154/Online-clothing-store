@@ -9,8 +9,6 @@ import za.ac.cput.domain.User;
 import za.ac.cput.factory.UserFactory;
 import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 @Configuration
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
